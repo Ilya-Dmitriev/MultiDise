@@ -1,0 +1,30 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .header {
+        width: 100%;
+        height: fit-content;
+        background-color: $menu_bg_cl;
+    }
+    .main {
+        width: 100%;
+        flex-grow: 1;
+        .not_found {
+            font-size: 30px;
+            font-weight: 900;
+        }
+    }
+    .footer {
+        width: 100%;
+        height: 50px;
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $main_tx_cl;
+        font-weight: 900;
+        background-color: $main_bg_cl;
+    }
+}

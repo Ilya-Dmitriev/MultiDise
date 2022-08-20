@@ -1,0 +1,25 @@
+.spell_wrap {
+    padding: 5px;
+    padding-left: 20px;
+    font-family: "Roboto";
+    font-size: 16px;
+    border: 2px solid $main_tx_cl;
+
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    grid-template-areas:
+        "level name ."
+        "level school .";
+    .spell_name {
+        grid-area: name;
+    }
+    .spell_level {
+        grid-area: level;
+        text-align: center;
+    }
+    .spell_school {
+        grid-area: school;
+    }
+}

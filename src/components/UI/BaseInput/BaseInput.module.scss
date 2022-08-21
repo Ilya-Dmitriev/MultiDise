@@ -1,10 +1,10 @@
 $font_size: 16px;
 
-.base_input{
-    padding: 5px;
-    padding-left: 10px;
-    font-size: $font_size;
-    color: $main_tx_cl;
-    border: 1px solid $main_tx_cl;
-    border-radius: calc(#{$font_size}/2 + 6px);
+.base_input {
+  padding: 5px;
+  padding-left: 10px;
+  font-size: $font_size;
+  color: $main_tx_cl;
+  border: 1px solid $main_tx_cl;
+  border-radius: calc(#{$font_size}/ 2 + 6px);
 }

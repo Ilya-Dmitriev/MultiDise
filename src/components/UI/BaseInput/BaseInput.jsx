@@ -1,14 +1,19 @@
-import React from 'react'
-import classes from './BaseInput.module.scss'
+import React from 'react';
 
-const BaseInput = ({ placeholder = "Input", className, ...props }) => {
-    return (
-        <input
-            className={`${classes.base_input} ${className}`}
-            placeholder={placeholder}
-            {...props}
-        />
-    )
-}
+import classes from './BaseInput.module.scss';
 
-export default BaseInput
+const BaseInput = ({
+  placeholder = 'Input',
+  className,
+  ...props
+}) => {
+  return (
+    <input
+      className={`${classes.base_input} ${className}`}
+      placeholder={placeholder}
+      {...props}
+    />
+  );
+};
+
+export default BaseInput;

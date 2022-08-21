@@ -1,0 +1,26 @@
+{
+  "private": true,
+  "name": "@multidise/eslint-config",
+  "version": "0.0.1",
+  "description": "ESLint dependencies and config for linting javascript",
+  "license": "ISC",
+  "author": "",
+  "main": ".eslintrc.json",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "eslint-config-canonical": "^37.0.3",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "jsonc-eslint-parser": "^2.1.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.18.9",
+    "@typescript-eslint/eslint-plugin": "^5.33.1"
+  }
+}

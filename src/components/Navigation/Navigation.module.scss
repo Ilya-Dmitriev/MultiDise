@@ -1,20 +1,20 @@
 .nav {
-    width: min-content;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    background-color: $menu_bg_cl;
+  width: min-content;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  background-color: $menu_bg_cl;
 }
 
 .links {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    left: -100%;
-    transition: left 0.5s;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: -100%;
+  transition: left 0.5s;
 
-    &.active {
-        left: 0;
-    }
-    background-color: $menu_bg_cl;
+  &.active {
+    left: 0;
+  }
+  background-color: $menu_bg_cl;
 }

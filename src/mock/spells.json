@@ -1,110 +1,69 @@
 [
   {
-    "classes": [
-      "ARTIFICER",
-      "WIZARD",
-      "SORCERER"
-    ],
+    "classes": ["ARTIFICER", "WIZARD", "SORCERER"],
     "level": "Cantrip",
     "name": "Acid Splash",
     "school": "Conjuration",
     "text": "You hurl a bubble of acid. Choose one or two creatures you can see within range. If you choose two, they must be within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage."
   },
   {
-    "classes": [
-      "ALCHEMIST",
-      "WIZARD"
-    ],
+    "classes": ["ALCHEMIST", "WIZARD"],
     "level": "2",
     "name": "Acid Arrow",
     "school": "Evocation",
     "text": "A shimmering green arrow streaks toward a target within range and bursts in a spray of acid. Make a ranged spell attack against the target. On a hit, the target takes 4d4 acid damage immediately and 2d4 acid damage at the end of its next turn. On a miss, the arrow splashes the target with acid for half as much of the initial damage and no damage at the end of its next turn."
   },
   {
-    "classes": [
-      "CLERIC",
-      "WIZARD",
-      "DEATH DOMAIN",
-      "OATHBREAKER"
-    ],
+    "classes": ["CLERIC", "WIZARD", "DEATH DOMAIN", "OATHBREAKER"],
     "level": "3",
     "name": "Animate Dead",
     "school": "Necromancy",
     "text": "This spell creates an undead servant. Choose a pile of bones or a corpse of a Medium or Small humanoid within range. Your spell imbues the target with a foul mimicry of life, raising it as an undead creature. The target becomes a skeleton if you chose bones or a zombie if you chose a corpse (the GM has the creature's game statistics)."
   },
   {
-    "classes": [
-      "ARTIFICER",
-      "WIZARD",
-      "KNOWLEDGE DOMAIN",
-      "ARCANA DOMAIN"
-    ],
+    "classes": ["ARTIFICER", "WIZARD", "KNOWLEDGE DOMAIN", "ARCANA DOMAIN"],
     "level": "4",
     "name": "Arcane Eye",
     "school": "Divination",
     "text": "You create an invisible, magical eye within range that hovers in the air for the duration."
   },
   {
-    "classes": [
-      "DRUID",
-      "WIZARD",
-      "SORCERER"
-    ],
+    "classes": ["DRUID", "WIZARD", "SORCERER"],
     "level": "Cantrip",
     "name": "Control Flames",
     "school": "Transmutation",
     "text": "You choose nonmagical flame that you can see within range and that fits within a 5-foot cube. You affect it in one of the following ways:"
   },
   {
-    "classes": [
-      "CLERIC",
-      "THE FATHOMLESS",
-      "DRUID"
-    ],
+    "classes": ["CLERIC", "THE FATHOMLESS", "DRUID"],
     "level": "1",
     "name": "Create or Destroy Water",
     "school": "Transmutation",
     "text": "You either create or destroy water."
   },
   {
-    "classes": [
-      "SORCERER",
-      "WIZARD",
-      "DRUID"
-    ],
+    "classes": ["SORCERER", "WIZARD", "DRUID"],
     "level": "2",
     "name": "Dust Devil",
     "school": "Conjuration",
     "text": "Choose an unoccupied 5-foot cube of air that you can see within range. An elemental force that resembles a dust devil appears in the cube and lasts for the spell’s duration."
   },
   {
-    "classes": [
-      "ARTIFICER",
-      "WIZARD",
-      "SORCERER",
-      "DRUID",
-      "RANGER"
-    ],
+    "classes": ["ARTIFICER", "WIZARD", "SORCERER", "DRUID", "RANGER"],
     "level": "1",
     "name": "Absorb Elements",
     "school": "Abjuration",
     "text": "he spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends."
   },
   {
-    "classes": [
-      "DRUID",
-      "WIZARD",
-      "SORCERER"
-    ],
+    "classes": ["DRUID", "WIZARD", "SORCERER"],
     "level": "3",
     "name": "Erupting Earth",
     "school": "Transmutation",
     "text": "Choose a point you can see on the ground within range. A fountain of churned earth and stone erupts in a 20-foot cube centered on that point. Each creature in that area must make a Dexterity saving throw. A creature takes 3d12 bludgeoning damage on a failed save, or half as much damage on a successful one. Additionally, the ground in that area becomes difficult terrain until cleared. Each 5-foot-square portion of the area requires at least 1 minute to clear by hand."
   },
   {
-    "classes": [
-      "WIZARD"
-    ],
+    "classes": ["WIZARD"],
     "level": "4",
     "name": "Faithful Hound",
     "school": "Conjuration",

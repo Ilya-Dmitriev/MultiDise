@@ -1,11 +1,4 @@
-import {
-  Classes,
-  Home,
-  NotFound,
-  Profile,
-  Rases,
-  Spells,
-} from '../pages';
+import { Classes, Home, NotFound, Profile, Rases, Spells } from '../pages';
 
 export const routes = [
   {

@@ -1,6 +1,4 @@
-import {
-  useMemo,
-} from 'react';
+import { useMemo } from 'react';
 
 export const useListFilter = (arrayOfObjects, objectField, listQuery) => {
   const listQueryState = Object.values(listQuery).every(Boolean);
@@ -13,11 +11,6 @@ export const useListFilter = (arrayOfObjects, objectField, listQuery) => {
     return arrayOfObjects.filter((object) => {
       return !listQuery[object[objectField]];
     });
-  }, [
-    listQueryState,
-    arrayOfObjects,
-    listQuery,
-    objectField,
-  ]);
+  }, [listQueryState, arrayOfObjects, listQuery, objectField]);
   return filteredArray;
 };

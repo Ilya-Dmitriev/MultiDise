@@ -2,9 +2,7 @@ import React from 'react';
 
 import classes from './Spell.module.scss';
 
-const Spell = ({
-  spell,
-}) => {
+const Spell = ({ spell }) => {
   return (
     <div className={classes.spell_wrap}>
       <div className={classes.spell_name}>

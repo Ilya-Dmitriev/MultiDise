@@ -1,0 +1,25 @@
+.filter_bar {
+    display: flex;
+    padding: 10px;
+    border: 1px solid $main_tx_cl;
+    border-radius: 10px;
+    .filter_name {
+        margin-right: 10px;
+        font-size: 16px;
+        color: $main_tx_cl;
+    }
+    .filter_swich {
+        .filter_key {
+            margin: 3px;
+            padding: 3px;
+            border-radius: 3px;
+            background-color: rgba($color: #000000, $alpha: 0.2);
+            &:hover {
+                background-color: rgba($color: #000000, $alpha: 0.4);
+            }
+            &.active {
+                background-color: rgba($color: #000000, $alpha: 0.6);
+            }
+        }
+    }
+}

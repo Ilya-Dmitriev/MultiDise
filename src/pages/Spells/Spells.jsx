@@ -2,25 +2,27 @@ import React, { useState } from 'react'
 import Spell from '../../components/Spell/Spell.jsx'
 import BaseInput from '../../components/UI/BaseInput/BaseInput.jsx'
 import spellsList from "../../mock/spells.json"
-import BaseBtn from '../../components/UI/Buttons/BaseBtn.jsx'
 import classes from './Spells.module.scss'
-import { useFilter } from '../../hooks/useFilter.js'
+import { useSrtingFilter } from '../../hooks/useSrtingFilter.js'
 import { namedAndCustomSort } from '../../utils/namedAndCustomSort.js'
+import SpellFilter from '../../components/SpellFIlter/SpellFilter.jsx'
 import Modal from '../../components/UI/Modal/Modal.jsx'
+import BaseBtn from '../../components/UI/Buttons/BaseBtn.jsx'
 
 const Spells = () => {
     const spellLevelSort = {
         argument: 'level',
         Cantrip: 0,
-        '1st': 1,
-        '2nd': 2,
-        '3rd': 3,
-        '4th': 4,
+        '1': 1,
+        '2': 2,
+        '3': 3,
+        '4': 4,
     }
-    const [spells, setSpells] = useState(namedAndCustomSort(spellsList, spellLevelSort))
+    const spells = namedAndCustomSort(spellsList, spellLevelSort)
+    const [spellsState, setSpellsState] = useState(spells)
     const [filterQuery, setFilterQuery] = useState('')
-    const nameFilteredSpells = useFilter(spells, 'name', filterQuery)
-    const [modal, setModal] = useState(false)
+    const nameFilteredSpells = useSrtingFilter(spellsState, 'name', filterQuery)
+    const [modal, setModal] = useState(true)
 
     return (
         <>
@@ -40,26 +42,9 @@ const Spells = () => {
                 >
                     <div className={classes.modal_name}>Filters</div>
                     <hr />
-                    <div className={classes.filter_bar}>
-                        <strong className={classes.filter_name}>Level</strong>
-                        <div
-                            className={classes.filter_swich}
-                            onClick={(e) => { console.log(e.currentTarget === e.target) }}
-                        >
-                            <span>Cantrip</span>
-                            <span>1</span>
-                            <span>2</span>
-                            <span>3</span>
-                            <span>4</span>
-                            <span>5</span>
-                            <span>6</span>
-                            <span>7</span>
-                            <span>8</span>
-                            <span>9</span>
-                        </div>
-                    </div>
+                    <SpellFilter spells={spellsState} setSpells={setSpellsState} />
                 </Modal>
-            </div>
+            </div >
             <div className={classes.list}>
                 {nameFilteredSpells.map((spell) =>
                     <Spell key={spell.name} spell={spell} />)}

@@ -13,7 +13,7 @@
     {
         "name": "Acid Arrow",
         "school": "Evocation",
-        "level": "2nd",
+        "level": "2",
         "classes": [
             "ALCHEMIST",
             "WIZARD"
@@ -23,7 +23,7 @@
     {
         "name": "Animate Dead",
         "school": "Necromancy",
-        "level": "3rd",
+        "level": "3",
         "classes": [
             "CLERIC",
             "WIZARD",
@@ -35,7 +35,7 @@
     {
         "name": "Arcane Eye",
         "school": "Divination",
-        "level": "4th",
+        "level": "4",
         "classes": [
             "ARTIFICER",
             "WIZARD",
@@ -58,7 +58,7 @@
     {
         "name": "Create or Destroy Water",
         "school": "Transmutation",
-        "level": "1st",
+        "level": "1",
         "classes": [
             "CLERIC",
             "THE FATHOMLESS",
@@ -69,7 +69,7 @@
     {
         "name": "Dust Devil",
         "school": "Conjuration",
-        "level": "2nd",
+        "level": "2",
         "classes": [
             "SORCERER",
             "WIZARD",
@@ -80,7 +80,7 @@
     {
         "name": "Absorb Elements",
         "school": "Abjuration",
-        "level": "1st",
+        "level": "1",
         "classes": [
             "ARTIFICER",
             "WIZARD",
@@ -93,7 +93,7 @@
     {
         "name": "Erupting Earth",
         "school": "Transmutation",
-        "level": "3rd",
+        "level": "3",
         "classes": [
             "DRUID",
             "WIZARD",
@@ -104,7 +104,7 @@
     {
         "name": "Faithful Hound",
         "school": "Conjuration",
-        "level": "4th",
+        "level": "4",
         "classes": [
             "WIZARD"
         ],

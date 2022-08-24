@@ -2,3 +2,6 @@ node_modules
 dist
 package-lock.json
 CMD_Git_NPM_commands.txt
+
+.eslintcache
+.stylelintcache

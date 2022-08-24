@@ -1,22 +1,16 @@
-import { useMemo } from "react"
+import { useMemo } from 'react';
 
 export const useListFilter = (arrayOfObjects, objectField, listQuery) => {
-    const listQueryState = useMemo(() => {
-        let mass = true
-        for (let key in listQuery) {
-            mass = mass && listQuery[key]
-        }
-        return mass
+  const listQueryState = Object.values(listQuery).every(Boolean);
+
+  const filteredArray = useMemo(() => {
+    if (listQueryState) {
+      return arrayOfObjects;
     }
-    )
-    const filteredArr = useMemo(() => {
-        if (listQueryState) {
-            return arrayOfObjects
-        } else {
-            return [...arrayOfObjects].filter((object) => {
-                return !listQuery[object[objectField]]
-            })
-        }
-    }, [arrayOfObjects, objectField, listQuery])
-    return filteredArr
-}
+
+    return arrayOfObjects.filter((object) => {
+      return !listQuery[object[objectField]];
+    });
+  }, [listQueryState, arrayOfObjects, listQuery, objectField]);
+  return filteredArray;
+};

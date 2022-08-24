@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
-const Classes = () => {
-    return (
-        <div>Classes</div>
-    )
-}
-
-export default Classes
+export const Classes = () => {
+  return <div>Classes</div>;
+};

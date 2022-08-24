@@ -1,0 +1,75 @@
+{
+  "extends": ["canonical"],
+  "ignorePatterns": ["package.json"],
+  "overrides": [
+    {
+      "extends": ["canonical/react"],
+      "files": ["*.jsx", "*.js"],
+      "rules": {
+        "@babel/object-curly-spacing": 0,
+        "array-bracket-newline": 0,
+        "array-element-newline": 0,
+        "canonical/destructuring-property-newline": 0,
+        "canonical/import-specifier-newline": 0,
+        "import/extensions": [
+          1,
+          {
+            "css": "always",
+            "jpg": "always",
+            "json": "always",
+            "png": "always",
+            "scss": "always",
+            "svg": "always"
+          }
+        ],
+        "import/order": 0,
+        "jsx-quotes": ["warn", "prefer-double"],
+        "no-extra-parens": 0,
+        "object-curly-newline": 0,
+        "object-property-newline": 0,
+        "react/forbid-component-props": 0,
+        "react/jsx-sort-props": [
+          2,
+          {
+            "callbacksLast": true,
+            "ignoreCase": true,
+            "reservedFirst": ["key"],
+            "shorthandLast": true
+          }
+        ],
+        "react/prop-types": 0,
+        "simple-import-sort/imports": [
+          "error",
+          {
+            "groups": [
+              ["^react"],
+              ["^@mui", "^assets"],
+              ["^components", "^hooks", "^pages", "^theme"],
+              ["^@planeta"],
+              ["^\\u0000"],
+              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
+              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
+              ["clsx", "^.*.scss"]
+            ]
+          }
+        ],
+        "unicorn/no-nested-ternary": 0
+      }
+    },
+    {
+      "extends": ["canonical/json"],
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {
+        "jsonc/array-bracket-newline": 0,
+        "jsonc/array-element-newline": 0
+      }
+    },
+    {
+      "extends": ["canonical/yaml"],
+      "files": "*.yaml"
+    }
+  ],
+  "plugins": ["simple-import-sort"],
+  "root": true
+}

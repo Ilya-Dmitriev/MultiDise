@@ -1,10 +1,29 @@
-import * as pages from '../pages/pages.js'
+import { Classes, Home, NotFound, Profile, Rases, Spells } from '../pages';
 
 export const routes = [
-    { element: pages.NotFound, path: '*', index: false },
-    { element: pages.Home, path: '/', index: true },
-    { element: pages.Classes, path: 'classes', index: false },
-    { element: pages.Rases, path: 'rases', index: false },
-    { element: pages.Spells, path: 'spells', index: false },
-    { element: pages.Profile, path: 'profile', index: false },
-]
+  {
+    element: <NotFound />,
+    path: '*',
+  },
+  {
+    element: <Home />,
+    index: true,
+    path: '/',
+  },
+  {
+    element: <Classes />,
+    path: '/classes',
+  },
+  {
+    element: <Rases />,
+    path: '/rases',
+  },
+  {
+    element: <Spells />,
+    path: '/spells',
+  },
+  {
+    element: <Profile />,
+    path: '/profile',
+  },
+];

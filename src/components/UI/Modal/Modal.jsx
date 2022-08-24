@@ -1,20 +1,28 @@
-import React from 'react'
-import classes from './Modal.module.scss'
+import React from 'react';
 
-const Modal = ({ className, visible, setVisible, children }) => {
-    return (
-        <div
-            className={`${classes.modal} ${visible ? classes.active : ''} ${className}`}
-            onClick={() => { setVisible(false) }}
-        >
-            <div
-                className={classes.modal_content}
-                onClick={(e) => { e.stopPropagation() }}
-            >
-                {children}
-            </div>
-        </div>
-    )
-}
+import clsx from 'clsx';
+import classes from './Modal.module.scss';
 
-export default Modal
+export const Modal = ({ className, visible, setVisible, children }) => {
+  const rootClasses = clsx(classes.modal, visible && classes.visible, className);
+  return (
+    <div
+      className={rootClasses}
+      onClick={() => {
+        return setVisible(false);
+      }}
+      onKeyDown={(event) => {
+        return event.code === 27 && setVisible(false);
+      }}
+    >
+      <div
+        className={classes.modal_content}
+        onClick={({ stopPropagation }) => {
+          return stopPropagation();
+        }}
+      >
+        {children}
+      </div>
+    </div>
+  );
+};

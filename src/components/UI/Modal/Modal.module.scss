@@ -1,19 +1,21 @@
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    display: none;
-    background-color: rgba($color: #5c5c5c, $alpha: 0.2);
-    &.active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .modal_content {
-        padding: 20px;
-        border-radius: 20px;
-        background-color: $main_bg_cl;
-    }
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  background-color: rgba($color: #5c5c5c, $alpha: 0.2);
+
+  &.visible {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .modal_content {
+    padding: 20px;
+    border-radius: 20px;
+    background-color: $main_bg_cl;
+  }
 }

@@ -1,7 +1,11 @@
-import './sass/style.scss'
-import React from 'react'
-import App from './App/App.js'
-import ReactDOM from 'react-dom/client'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
-root.render(<App />)
+import { App } from './App';
+
+// eslint-disable-next-line import/no-unassigned-import
+import './sass/style.scss';
+
+// eslint-disable-next-line no-undef
+const root = createRoot(document.querySelector('#root'));
+root.render(<App />);

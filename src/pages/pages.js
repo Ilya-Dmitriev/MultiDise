@@ -1,6 +1,0 @@
-export { default as Home } from './Home.jsx'
-export { default as Profile } from './Profile.jsx'
-export { default as Rases } from './Rases.jsx'
-export { default as Spells } from './Spells/Spells.jsx'
-export { default as NotFound } from './NotFound.jsx'
-export { default as Classes } from './Classes.jsx'

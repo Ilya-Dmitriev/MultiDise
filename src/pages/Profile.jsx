@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Pcrofile = () => {
+export const Profile = () => {
   return <div>Pcrofile</div>;
 };

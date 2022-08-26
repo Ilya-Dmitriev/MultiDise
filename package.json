@@ -12,10 +12,12 @@
     "format:style": "stylelint \"src/**/*.scss\" --cache --fix",
     "serve": "cross-env NODE_ENV=development webpack serve --open",
     "start": "npm run serve",
-    "stats": "cross-env NODE_ENV=production webpack --json > stats.json && webpack-bundle-analyzer stats.json"
+    "stats": "cross-env NODE_ENV=production webpack --json > stats.json && webpack-bundle-analyzer stats.json",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "workspaces": [
-    "linters/*"
+    "tools/*"
   ],
   "dependencies": {
     "axios": "^0.27.2",
@@ -32,6 +34,15 @@
     "@babel/preset-typescript": "^7.16.0",
     "@multidise/eslint-config": "workspace:^0.0.1",
     "@multidise/stylelint-config": "workspace:^0.0.1",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.4.22",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/builder-webpack5": "^6.5.10",
+    "@storybook/manager-webpack5": "^6.5.10",
+    "@storybook/preset-scss": "^1.0.3",
+    "@storybook/react": "^6.1.21",
+    "@storybook/testing-library": "^0.0.13",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^9.0.1",
@@ -39,6 +50,7 @@
     "css-loader": "^6.2.0",
     "cssnano": "^5.0.7",
     "eslint": "^8.22.0",
+    "eslint-plugin-storybook": "^0.6.4",
     "html-webpack-plugin": "^5.3.2",
     "mini-css-extract-plugin": "^2.2.0",
     "postcss": "^8.3.6",

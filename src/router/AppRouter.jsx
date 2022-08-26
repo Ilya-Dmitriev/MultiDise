@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Layout from '../layouts/Layout';
+import { LayOut } from '../layouts/LayOut';
 
 import { routes } from './router';
 
@@ -12,9 +12,9 @@ const routeNodes = routes.map((route) => {
 export const AppRouter = () => {
   return (
     <BrowserRouter>
-      <Layout>
+      <LayOut>
         <Routes>{routeNodes}</Routes>
-      </Layout>
+      </LayOut>
     </BrowserRouter>
   );
 };

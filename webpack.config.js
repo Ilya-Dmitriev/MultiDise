@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable indent */
 /* eslint-disable no-undef */
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -8,8 +8,9 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 
 const isDevelopment = process.env.NODE_ENV === 'development';
-const filename = (extension) =>
-    isDevelopment ? `[name]${extension}` : `[name].[hash]${extension}`;
+const filename = (extension) => {
+    return (isDevelopment ? `[name]${extension}` : `[name].[hash]${extension}`);
+};
 
 const PATHS = {
     assets: 'assets',
@@ -39,14 +40,11 @@ module.exports = {
         historyApiFallback: true,
         host: 'localhost',
         hot: true,
-        port: 8281,
+        port: 8_281,
     },
     devtool: isDevelopment ? 'eval-cheap-module-source-map' : false,
     entry: {
         project: './index.js',
-    },
-    resolve: {
-        extensions: ['.js', '.jsx'],
     },
     mode: process.env.NODE_ENV,
     module: {
@@ -64,7 +62,14 @@ module.exports = {
                         loader: MiniCssExtractPlugin.loader,
                         options: { publicPath: '' },
                     },
-                    'css-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            modules: {
+                                localIdentName: '[local]--[hash:base64:5]',
+                            },
+                        },
+                    },
                     'postcss-loader',
                     {
                         loader: 'sass-loader',
@@ -100,5 +105,8 @@ module.exports = {
         path: PATHS.dist,
     },
     plugins,
+    resolve: {
+        extensions: ['.js', '.jsx'],
+    },
     target: isDevelopment ? 'web' : 'browserslist',
 };

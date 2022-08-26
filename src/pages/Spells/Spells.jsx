@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { Spell, SpellFilter } from '../../components';
-import Modal, { BaseButton, BaseInput } from '../../components/UI';
+import { BaseButton, BaseInput, Modal } from '../../components/UI';
 import { useStringFilter } from '../../hooks/useStringFilter';
 import spellsList from '../../mock/spells.json';
 import { namedAndCustomSort } from '../../utils/namedAndCustomSort';

@@ -12,7 +12,7 @@ const oneToNineFilters = Object.fromEntries(
   }),
 );
 
-const SpellFilter = ({ spells, setSpells }) => {
+export const SpellFilter = ({ spells, setSpells }) => {
   const [levelFilterQuery, setLevelFilterQuery] = useState({
     ...oneToNineFilters,
     Cantrip: true,
@@ -43,9 +43,7 @@ const SpellFilter = ({ spells, setSpells }) => {
             return (
               <span
                 key={element}
-                className={`${classes.filter_key} ${
-                  levelFilterQuery[element] ? '' : classes.active
-                }`}
+                className={`${classes.filter_key} ${levelFilterQuery[element] ? '' : classes.active}`}
               >
                 {element}
               </span>
@@ -55,5 +53,3 @@ const SpellFilter = ({ spells, setSpells }) => {
     </div>
   );
 };
-
-export default SpellFilter;

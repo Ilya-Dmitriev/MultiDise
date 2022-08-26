@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 
-import Navigation from '../components/Navigation/Navigation';
+import { Navigation } from '../components';
 
 import classes from './Layout.module.scss';
 
-const Layout = () => {
+export const LayOut = () => {
   return (
     <div className={classes.container}>
       <header className={classes.header}>
@@ -18,5 +18,3 @@ const Layout = () => {
     </div>
   );
 };
-
-export default Layout;

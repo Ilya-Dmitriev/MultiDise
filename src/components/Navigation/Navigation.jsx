@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 
-import BaseButton from '../UI/Buttons/BaseButton';
-import BaseNavLink from '../UI/Buttons/BaseNavLink';
+import { BaseButton, BaseNavLink } from '../UI';
 
 import classes from './Navigation.module.scss';
 
-const Navigation = () => {
+export const Navigation = () => {
   const [menuState, setMenuState] = useState(false);
 
   return (
@@ -47,5 +46,3 @@ const Navigation = () => {
     </nav>
   );
 };
-
-export default Navigation;

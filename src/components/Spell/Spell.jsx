@@ -2,7 +2,7 @@ import React from 'react';
 
 import classes from './Spell.module.scss';
 
-const Spell = ({ spell }) => {
+export const Spell = ({ spell }) => {
   return (
     <div className={classes.spell_wrap}>
       <div className={classes.spell_name}>
@@ -18,4 +18,3 @@ const Spell = ({ spell }) => {
   );
 };
 
-export default Spell;

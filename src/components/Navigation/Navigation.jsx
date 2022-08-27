@@ -2,10 +2,15 @@ import React, { useState } from 'react';
 
 import { BaseButton, BaseNavLink } from '../UI';
 
+import clsx from 'clsx';
 import classes from './Navigation.module.scss';
 
-export const Navigation = () => {
+export const Navigation = ({ adressList }) => {
   const [menuState, setMenuState] = useState(false);
+  const linksList = adressList.map((adress) => {
+    return <BaseNavLink key={adress.path} to={adress.path}>{adress.title}</BaseNavLink>;
+  });
+  const linksClasses = clsx(classes.links, menuState && classes.active);
 
   return (
     <nav
@@ -24,24 +29,14 @@ export const Navigation = () => {
         MENU
       </BaseButton>
       <div
-        className={`${classes.links} ${menuState ? `${classes.active}` : ''}`}
+        className={linksClasses}
         onClick={(event) => {
           if (!event.target.ariaCurrent) {
             setMenuState(false);
           }
         }}
       >
-        <BaseNavLink to="/">Home</BaseNavLink>
-        <BaseNavLink to="classes">Classes</BaseNavLink>
-        <BaseNavLink to="rases">Rases</BaseNavLink>
-        <BaseNavLink to="spells">Spells</BaseNavLink>
-        <BaseNavLink to="traits">Traits</BaseNavLink>
-        <BaseNavLink to="backgrounds">Backgrounds</BaseNavLink>
-        <BaseNavLink to="weapon">Weapon</BaseNavLink>
-        <BaseNavLink to="armor">Armor</BaseNavLink>
-        <BaseNavLink to="equipment">Ewuipment</BaseNavLink>
-        <BaseNavLink to="magic_items">Magic Items</BaseNavLink>
-        <BaseNavLink to="bestiary">Bestiary</BaseNavLink>
+        {linksList}
       </div>
     </nav>
   );

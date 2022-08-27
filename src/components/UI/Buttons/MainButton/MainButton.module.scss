@@ -1,12 +1,12 @@
 .btn {
   padding: 10px;
   margin: 5px;
-  font-family: Rubik, sans-serif;
+  font-family: $main_font;
   text-transform: uppercase;
+  text-decoration: none;
   font-size: 16px;
   color: $main_tx_cl;
   text-align: center;
-  background: transparent;
   border: 1px solid $main_tx_cl;
 
   &:hover {

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { BaseButton } from './BaseButton';
+import { BaseButton } from './MainButton/BaseButton';
 
 import classes from './BaseButton.module.scss';
 

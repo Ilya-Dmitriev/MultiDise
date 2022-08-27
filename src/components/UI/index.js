@@ -1,4 +1,4 @@
 export { Modal } from './Modal/Modal';
-export { BaseButton } from './Buttons/BaseButton';
-export { BaseNavLink } from './Buttons/BaseNavLink';
+export { BaseButton } from './Buttons/MainButton/MainButton';
+export { BaseNavLink } from './Buttons/MainButton/MainNavLink';
 export { BaseInput } from './BaseInput/BaseInput';

@@ -1,6 +1,3 @@
-export { Classes } from './Classes';
 export { Home } from './Home';
-export { NotFound } from './NotFound';
-export { Profile } from './Profile';
-export { Rases } from './Rases';
+export { NotFound } from './NotFound/NotFound';
 export { Spells } from './Spells/Spells';

@@ -2,7 +2,7 @@
 /* eslint-disable no-undef */
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
@@ -21,12 +21,12 @@ const PATHS = {
 const plugins = [
     new HTMLWebpackPlugin({ template: `${PATHS.src}/index.html` }),
     new CleanWebpackPlugin(),
-    new CopyWebpackPlugin({
-        patterns: [
-            // { from: `${PATHS.assets}/img`, to: `${PATHS.assets}/img` },
-            { from: `${PATHS.assets}/fonts`, to: `${PATHS.assets}/fonts` },
-        ],
-    }),
+    // new CopyWebpackPlugin({
+    //     patterns: [
+    //         // { from: `${PATHS.assets}/img`, to: `${PATHS.assets}/img` },
+    //         { from: `${PATHS.assets}/fonts`, to: `${PATHS.assets}/fonts` },
+    //     ],
+    // }),
     new MiniCssExtractPlugin({ filename: filename('.css') }),
 ];
 

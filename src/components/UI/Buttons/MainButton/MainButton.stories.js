@@ -1,14 +1,14 @@
 import React from 'react';
 
-import { BaseButton } from './MainButton/BaseButton';
+import { MainButton } from './MainButton';
 
-import classes from './BaseButton.module.scss';
+import classes from './MainButton.module.scss';
 
 export default {
-  component: BaseButton,
-  title: 'BaseButton',
+  component: MainButton,
+  title: 'UI/Buttons/BaseButton',
 };
 
 export const Primary = () => {
-  return <BaseButton variant={classes.primary}>Button</BaseButton>;
+  return <MainButton variant={classes.primary}>Button</MainButton>;
 };

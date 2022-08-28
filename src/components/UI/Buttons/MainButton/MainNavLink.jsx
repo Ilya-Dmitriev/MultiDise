@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import clsx from 'clsx';
 import classes from './MainButton.module.scss';
 
-export const BaseNavLink = ({ children, className, ...props }) => {
+export const MainNavLink = ({ children, className, ...props }) => {
   return (
     <NavLink
       className={({ isActive }) => {

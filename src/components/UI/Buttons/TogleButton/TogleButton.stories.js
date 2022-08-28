@@ -6,7 +6,7 @@ import classes from './TogleButton.module.scss';
 
 export default {
   component: TogleButton,
-  title: 'TogleButton',
+  title: 'UI/Buttons/TogleButton',
 };
 
 export const Primary = () => {

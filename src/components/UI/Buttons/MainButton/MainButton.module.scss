@@ -1,16 +1,17 @@
 .btn {
-  padding: 10px;
+  padding: 12px;
   margin: 5px;
   font-family: $main_font;
   text-transform: uppercase;
   text-decoration: none;
   font-size: 16px;
+  line-height: 100%;
   color: $main_tx_cl;
   text-align: center;
   border: 1px solid $main_tx_cl;
 
   &:hover {
-    padding: 7px;
+    padding: 9px;
     margin: 8px;
   }
 
@@ -19,7 +20,7 @@
     color: $menu_bg_cl;
 
     &:hover {
-      padding: 10px;
+      padding: 12px;
       margin: 5px;
     }
   }

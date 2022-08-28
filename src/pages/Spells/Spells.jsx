@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
 import { Spell, SpellFilter } from '../../components';
-import { BaseButton, BaseInput, Modal } from '../../components/UI';
+import { MainButton, MainInput, Modal } from '../../components/UI';
+import { useListFilter } from '../../hooks/useListFilter';
 import { useStringFilter } from '../../hooks/useStringFilter';
 import spellsList from '../../mock/spells.json';
 import { namedAndCustomSort } from '../../utils/namedAndCustomSort';
@@ -14,40 +15,52 @@ const oneToFour = Object.fromEntries(
   }),
 );
 
+const oneToNineFilters = Object.fromEntries(
+  Array.from({
+    length: 9,
+  }).map((value, index) => {
+    return [index + 1, true];
+  }),
+);
+
 export const Spells = () => {
   const spellLevelSort = {
     ...oneToFour,
     argument: 'level',
     Cantrip: 0,
   };
+  const [levelFilterQuery, setLevelFilterQuery] = useState({
+    ...oneToNineFilters,
+    Cantrip: true,
+  });
   const spells = namedAndCustomSort(spellsList, spellLevelSort);
-  const [spellsState, setSpellsState] = useState(spells);
   const [filterQuery, setFilterQuery] = useState('');
-  const nameFilteredSpells = useStringFilter(spellsState, 'name', filterQuery);
+  const levelFilteredSpells = useListFilter(spells, 'level', levelFilterQuery);
+  const nameFilteredSpells = useStringFilter(levelFilteredSpells, 'name', filterQuery);
   const [modal, setModal] = useState(true);
 
   return (
     <>
       <div className={classes.managebar}>
-        <BaseInput
+        <MainInput
           className={classes.input}
           placeholder="Search spells"
           onChange={({ target }) => {
             setFilterQuery(target.value);
           }}
         />
-        <BaseButton
+        <MainButton
           className={classes.filters_btn}
           onClick={() => {
             setModal(true);
           }}
         >
           Filters
-        </BaseButton>
+        </MainButton>
         <Modal className={classes.filters_modal} setVisible={setModal} visible={modal}>
           <div className={classes.modal_name}>Filters</div>
           <hr />
-          <SpellFilter setSpells={setSpellsState} spells={spellsState} />
+          <SpellFilter setSpellsFilter={setLevelFilterQuery} spellsFilter={levelFilterQuery} />
         </Modal>
       </div>
       <div className={classes.list}>

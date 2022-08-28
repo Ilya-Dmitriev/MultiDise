@@ -17,8 +17,8 @@ export const Modal = ({ className, visible, setVisible, children }) => {
     >
       <div
         className={classes.modal_content}
-        onClick={({ stopPropagation }) => {
-          return stopPropagation();
+        onClick={(event) => {
+          event.stopPropagation();
         }}
       >
         {children}

@@ -7,4 +7,7 @@ $font_size: 16px;
   color: $main_tx_cl;
   border: 1px solid $main_tx_cl;
   border-radius: calc(#{$font_size}/ 2 + 6px);
+  &:focus {
+    outline: none;
+  }
 }

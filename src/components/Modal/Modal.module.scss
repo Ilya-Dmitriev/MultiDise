@@ -1,4 +1,19 @@
+.modal_btn {
+  padding: 7px;
+  font-size: 14px;
+  border-radius: 20px;
+
+  &:hover,
+  &.active {
+    padding: 7px;
+    margin: 5px;
+    background-color: $main_tx_cl;
+    color: $main_bg_cl;
+  }
+}
+
 .modal {
+  user-select: none;
   position: fixed;
   top: 0;
   left: 0;

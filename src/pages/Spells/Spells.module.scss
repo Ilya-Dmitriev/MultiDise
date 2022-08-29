@@ -7,22 +7,7 @@
     background-color: transparent;
   }
 
-  .filters_btn {
-    padding: 5px;
-    font-size: 14px;
-    border-radius: 20px;
-
-    &:hover {
-      padding: 5px;
-      margin: 5px;
-      background-color: $main_tx_cl;
-      color: $main_bg_cl;
-    }
-  }
-
   .filters_modal {
-    user-select: none;
-
     .modal_name {
       width: 100%;
       margin-bottom: 10px;
@@ -35,6 +20,24 @@
       border-top: 1px solid $main_tx_cl;
       margin-bottom: 10px;
     }
+
+    .modal_filter {
+      margin-top: 15px;
+    }
+  }
+}
+
+.clear_btn {
+  padding: 7px;
+  font-size: 14px;
+  border-radius: 20px;
+
+  &:hover,
+  &.active {
+    padding: 7px;
+    margin: 5px;
+    background-color: $main_tx_cl;
+    color: $main_bg_cl;
   }
 }
 

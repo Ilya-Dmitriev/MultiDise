@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useMemo } from 'react';
+
+import { HidingButton } from '../UI/Buttons/HidingButton/HidingButton';
 
 import clsx from 'clsx';
 import classes from './SpellFilter.module.scss';
 
-export const SpellFilter = ({ spellsFilter, setSpellsFilter }) => {
+export const SpellFilter = ({ className, filterName, spellsFilter, setSpellsFilter, resetFilter }) => {
+  const filterClasses = clsx(classes.filter_bar, className);
   const onFiltersChange = (event) => {
     if (!(event.currentTarget === event.target)) {
       setSpellsFilter({
@@ -13,14 +16,30 @@ export const SpellFilter = ({ spellsFilter, setSpellsFilter }) => {
     }
   };
 
+  const clearButtonState = useMemo(() => {
+    let state = false;
+    for (const key in spellsFilter) {
+      if (Object.prototype.hasOwnProperty.call(spellsFilter, key)) {
+        state = state || !spellsFilter[key];
+      }
+    }
+
+    return state;
+  }, [spellsFilter]);
+
   return (
-    <div className={classes.filter_bar}>
-      <strong className={classes.filter_name}>Level</strong>
+    <div className={filterClasses}>
+      <strong className={classes.filter_name}>{filterName}</strong>
+      <HidingButton
+        className={classes.clear_btn}
+        visible={clearButtonState}
+        onClick={() => {
+          resetFilter(spellsFilter, setSpellsFilter);
+        }}
+      >Clear</HidingButton>
       <div className={classes.filter_swich} onClick={onFiltersChange}>
         {Object.keys(spellsFilter)
-          .sort((a, b) => {
-            return a === 'Cantrip' ? -1 : b === 'Cantrip' ? 1 : 0;
-          })
+          .sort()
           .map((element) => {
             return (
               <span

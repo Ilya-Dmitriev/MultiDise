@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-export const useListFilter = (arrayOfObjects, objectField, listQuery) => {
+export const useListFlipFilter = (arrayOfObjects, objectField, listQuery) => {
   const listQueryState = Object.values(listQuery).every(Boolean);
 
   const filteredArray = useMemo(() => {

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-import { Spell, SpellFilter } from '../../components';
-import { MainButton, MainInput, Modal } from '../../components/UI';
-import { useListFilter } from '../../hooks/useListFilter';
+import { Modal, Spell, SpellFilter } from '../../components';
+import { MainButton, MainInput } from '../../components/UI';
+import { useListArrayFlipFilter } from '../../hooks/useListArrayFlipFilter';
+import { useListFlipFilter } from '../../hooks/useListFlipFilter';
 import { useStringFilter } from '../../hooks/useStringFilter';
 import spellsList from '../../mock/spells.json';
 import { namedAndCustomSort } from '../../utils/namedAndCustomSort';
@@ -11,7 +12,7 @@ import classes from './Spells.module.scss';
 
 const oneToFour = Object.fromEntries(
   Array.from({ length: 4 }).map((item, index) => {
-    return [index, index];
+    return [index + 1, index + 1];
   }),
 );
 
@@ -23,6 +24,17 @@ const oneToNineFilters = Object.fromEntries(
   }),
 );
 
+const resetFilter = (filter, setFilter) => {
+  const resetedFilter = {};
+  for (const key in filter) {
+    if (Object.prototype.hasOwnProperty.call(filter, key)) {
+      resetedFilter[key] = true;
+    }
+  }
+
+  setFilter(resetedFilter);
+};
+
 export const Spells = () => {
   const spellLevelSort = {
     ...oneToFour,
@@ -33,11 +45,34 @@ export const Spells = () => {
     ...oneToNineFilters,
     Cantrip: true,
   });
+  const [schoolFilterQuery, setSchoolFilterQuery] = useState({
+    Abjuration: true,
+    Conjuration: true,
+    Divination: true,
+    Evocation: true,
+    Necromancy: true,
+    Transmutation: true,
+  });
+  const [classesFilterQuery, setClassesFilterQuery] = useState({
+    ALCHEMIST: true,
+    ARTIFICER: true,
+    CLERIC: true,
+    DRUID: true,
+    RANGER: true,
+    SORCERER: true,
+    WIZARD: true,
+  });
   const spells = namedAndCustomSort(spellsList, spellLevelSort);
   const [filterQuery, setFilterQuery] = useState('');
-  const levelFilteredSpells = useListFilter(spells, 'level', levelFilterQuery);
+  const classFilteredSpells = useListArrayFlipFilter(spells, 'classes', classesFilterQuery);
+  const schoolFilteredSpells = useListFlipFilter(classFilteredSpells, 'school', schoolFilterQuery);
+  const levelFilteredSpells = useListFlipFilter(schoolFilteredSpells, 'level', levelFilterQuery);
   const nameFilteredSpells = useStringFilter(levelFilteredSpells, 'name', filterQuery);
-  const [modal, setModal] = useState(true);
+  const clearAllFilters = () => {
+    resetFilter(levelFilterQuery, setLevelFilterQuery);
+    resetFilter(schoolFilterQuery, setSchoolFilterQuery);
+    resetFilter(classesFilterQuery, setClassesFilterQuery);
+  };
 
   return (
     <>
@@ -49,19 +84,37 @@ export const Spells = () => {
             setFilterQuery(target.value);
           }}
         />
-        <MainButton
-          className={classes.filters_btn}
-          onClick={() => {
-            setModal(true);
-          }}
-        >
-          Filters
-        </MainButton>
-        <Modal className={classes.filters_modal} setVisible={setModal} visible={modal}>
+        <Modal className={classes.filters_modal} modalName="Filters">
           <div className={classes.modal_name}>Filters</div>
           <hr />
-          <SpellFilter setSpellsFilter={setLevelFilterQuery} spellsFilter={levelFilterQuery} />
+          <SpellFilter
+            className={classes.modal_filter}
+            filterName="Level"
+            resetFilter={resetFilter}
+            setSpellsFilter={setLevelFilterQuery}
+            spellsFilter={levelFilterQuery}
+          />
+          <SpellFilter
+            className={classes.modal_filter}
+            filterName="School"
+            resetFilter={resetFilter}
+            setSpellsFilter={setSchoolFilterQuery}
+            spellsFilter={schoolFilterQuery}
+          />
+          <SpellFilter
+            className={classes.modal_filter}
+            filterName="Classes"
+            resetFilter={resetFilter}
+            setSpellsFilter={setClassesFilterQuery}
+            spellsFilter={classesFilterQuery}
+          />
         </Modal>
+        <MainButton
+          className={classes.clear_btn}
+          onClick={() => {
+            clearAllFilters();
+          }}
+        >Clear all</MainButton>
       </div>
       <div className={classes.list}>
         {nameFilteredSpells.map((spell) => {

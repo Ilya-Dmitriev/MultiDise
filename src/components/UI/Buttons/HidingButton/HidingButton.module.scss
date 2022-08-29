@@ -1,0 +1,42 @@
+$border-color: 1px solid $main_tx_cl;
+
+.hiding_btn {
+  padding: 2px;
+  position: relative;
+  overflow: hidden;
+  color: $main_tx_cl;
+  background: none;
+  border: none;
+  box-shadow: -1px 0px 0px 0px $main_tx_cl, 1px 0px 0px 0px $main_tx_cl;
+  background-color: $main_bg_cl;
+
+  &::after,
+  &::before {
+    display: block;
+    content: "";
+    position: absolute;
+    left: -1px;
+    right: -1px;
+    height: 49%;
+    transition: all 0.5s;
+    background-color: inherit;
+  }
+  &::before {
+    top: 0px;
+    transform: translateY(-90%);
+    border-bottom: $border-color;
+  }
+  &::after {
+    bottom: 0px;
+    transform: translateY(90%);
+    border-top: $border-color;
+  }
+  &.unvisible {
+    &::before {
+      transform: translateY(0%);
+    }
+    &::after {
+      transform: translateY(0%);
+    }
+  }
+}

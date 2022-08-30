@@ -1,12 +1,13 @@
 .modal_btn {
+  margin: 0;
   padding: 7px;
   font-size: 14px;
   border-radius: 20px;
 
   &:hover,
   &.active {
+    margin: 0;
     padding: 7px;
-    margin: 5px;
     background-color: $main_tx_cl;
     color: $main_bg_cl;
   }

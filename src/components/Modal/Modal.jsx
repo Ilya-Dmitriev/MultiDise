@@ -5,10 +5,10 @@ import { MainButton } from '../UI/index';
 import clsx from 'clsx';
 import classes from './Modal.module.scss';
 
-export const Modal = ({ className, modalName, children }) => {
+export const Modal = ({ buttonClassName, className, modalName, children }) => {
   const [modal, setModal] = useState(false);
   const modalClasses = clsx(classes.modal, modal && classes.visible, className);
-  const buttonClasses = clsx(classes.modal_btn, modal && classes.active);
+  const buttonClasses = clsx(classes.modal_btn, modal && classes.active, buttonClassName);
 
   return (
     <>

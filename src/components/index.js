@@ -1,4 +1,4 @@
 export { Navigation } from './Navigation/Navigation';
 export { Spell } from './Spell/Spell';
-export { SpellFilter } from './SpellFilter/SpellFilter';
+export { Filter } from './FIlter/Filter';
 export { Modal } from './Modal/Modal';

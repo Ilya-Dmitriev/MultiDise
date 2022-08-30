@@ -6,13 +6,15 @@ export const Spell = ({ spell }) => {
   return (
     <div className={classes.spell_wrap}>
       <div className={classes.spell_name}>
-        <strong>Name:</strong> {`${spell.name}`}
+        <strong>{`${spell.name}`}</strong>
       </div>
-      <div className={classes.spell_level}>
-        <strong>Level:</strong> {`${spell.level}`}
+      <div className={classes.level_wrap}>
+        <div className={classes.spell_level}>
+          {`${spell.level[0]}`}
+        </div>
       </div>
       <div className={classes.spell_school}>
-        <strong>School:</strong> {`${spell.school}`}
+        <i>{`${spell.school}`}</i>
       </div>
     </div>
   );

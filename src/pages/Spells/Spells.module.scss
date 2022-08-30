@@ -1,50 +1,66 @@
-.managebar {
-  padding: 5px;
-  background-color: $main_bg_cl;
-
-  .input {
-    margin: 5px;
-    background-color: transparent;
-  }
-
-  .filters_modal {
-    .modal_name {
-      width: 100%;
-      margin-bottom: 10px;
-      text-align: center;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    hr {
-      border-top: 1px solid $main_tx_cl;
-      margin-bottom: 10px;
-    }
-
-    .modal_filter {
-      margin-top: 15px;
-    }
-  }
-}
-
-.clear_btn {
-  padding: 7px;
-  font-size: 14px;
-  border-radius: 20px;
-
-  &:hover,
-  &.active {
-    padding: 7px;
-    margin: 5px;
-    background-color: $main_tx_cl;
-    color: $main_bg_cl;
-  }
-}
-
-.list {
+.spells_page {
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  gap: 25px;
-  padding: 5px;
-  background-color: $main_bg_cl;
+
+  .spell_list {
+    .managebar {
+      padding: 15px;
+      background-color: $main_bg_cl;
+      .input {
+        background-color: transparent;
+      }
+      .modal_btn {
+        margin-left: 1em;
+      }
+
+      .filters_modal {
+        .modal_name {
+          width: 100%;
+          margin-bottom: 10px;
+          text-align: center;
+          font-size: 20px;
+          font-weight: bold;
+        }
+
+        hr {
+          border-top: 1px solid $main_tx_cl;
+          margin-bottom: 10px;
+        }
+
+        .modal_filter {
+          margin-top: 15px;
+        }
+      }
+
+      .clear_btn {
+        margin: 0;
+        margin-left: 1em;
+        padding: 7px;
+        font-size: 14px;
+        border-radius: 20px;
+
+        &:hover,
+        &.active {
+          margin: 0;
+          margin-left: 1em;
+          padding: 7px;
+          background-color: $main_tx_cl;
+          color: $main_bg_cl;
+        }
+      }
+    }
+
+    .list {
+      overflow: scroll;
+      height: calc(100% - #{$header_height});
+      padding: 15px;
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      background-color: $main_bg_cl;
+    }
+  }
+  .spell_zone {
+  }
 }

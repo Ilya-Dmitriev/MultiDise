@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Modal, Spell, SpellFilter } from '../../components';
+import { Filter, Modal, Spell } from '../../components';
 import { MainButton, MainInput } from '../../components/UI';
 import { useListArrayFlipFilter } from '../../hooks/useListArrayFlipFilter';
 import { useListFlipFilter } from '../../hooks/useListFlipFilter';
@@ -35,24 +35,14 @@ const resetFilter = (filter, setFilter) => {
   setFilter(resetedFilter);
 };
 
+const spellLevelSort = {
+  ...oneToFour,
+  argument: 'level',
+  Cantrip: 0,
+};
+const spells = namedAndCustomSort(spellsList, spellLevelSort);
+
 export const Spells = () => {
-  const spellLevelSort = {
-    ...oneToFour,
-    argument: 'level',
-    Cantrip: 0,
-  };
-  const [levelFilterQuery, setLevelFilterQuery] = useState({
-    ...oneToNineFilters,
-    Cantrip: true,
-  });
-  const [schoolFilterQuery, setSchoolFilterQuery] = useState({
-    Abjuration: true,
-    Conjuration: true,
-    Divination: true,
-    Evocation: true,
-    Necromancy: true,
-    Transmutation: true,
-  });
   const [classesFilterQuery, setClassesFilterQuery] = useState({
     ALCHEMIST: true,
     ARTIFICER: true,
@@ -62,12 +52,27 @@ export const Spells = () => {
     SORCERER: true,
     WIZARD: true,
   });
-  const spells = namedAndCustomSort(spellsList, spellLevelSort);
-  const [filterQuery, setFilterQuery] = useState('');
   const classFilteredSpells = useListArrayFlipFilter(spells, 'classes', classesFilterQuery);
+
+  const [schoolFilterQuery, setSchoolFilterQuery] = useState({
+    Abjuration: true,
+    Conjuration: true,
+    Divination: true,
+    Evocation: true,
+    Necromancy: true,
+    Transmutation: true,
+  });
   const schoolFilteredSpells = useListFlipFilter(classFilteredSpells, 'school', schoolFilterQuery);
+
+  const [levelFilterQuery, setLevelFilterQuery] = useState({
+    ...oneToNineFilters,
+    Cantrip: true,
+  });
   const levelFilteredSpells = useListFlipFilter(schoolFilteredSpells, 'level', levelFilterQuery);
-  const nameFilteredSpells = useStringFilter(levelFilteredSpells, 'name', filterQuery);
+
+  const [nameFilterQuery, setNameFilterQuery] = useState('');
+  const nameFilteredSpells = useStringFilter(levelFilteredSpells, 'name', nameFilterQuery);
+
   const clearAllFilters = () => {
     resetFilter(levelFilterQuery, setLevelFilterQuery);
     resetFilter(schoolFilterQuery, setSchoolFilterQuery);
@@ -75,52 +80,57 @@ export const Spells = () => {
   };
 
   return (
-    <>
-      <div className={classes.managebar}>
-        <MainInput
-          className={classes.input}
-          placeholder="Search spells"
-          onChange={({ target }) => {
-            setFilterQuery(target.value);
-          }}
-        />
-        <Modal className={classes.filters_modal} modalName="Filters">
-          <div className={classes.modal_name}>Filters</div>
-          <hr />
-          <SpellFilter
-            className={classes.modal_filter}
-            filterName="Level"
-            resetFilter={resetFilter}
-            setSpellsFilter={setLevelFilterQuery}
-            spellsFilter={levelFilterQuery}
+    <div className={classes.spells_page}>
+      <div className={classes.spell_list}>
+        <div className={classes.managebar}>
+          <MainInput
+            className={classes.input}
+            placeholder="Search spells"
+            onChange={({ target }) => {
+              setNameFilterQuery(target.value);
+            }}
           />
-          <SpellFilter
-            className={classes.modal_filter}
-            filterName="School"
-            resetFilter={resetFilter}
-            setSpellsFilter={setSchoolFilterQuery}
-            spellsFilter={schoolFilterQuery}
-          />
-          <SpellFilter
-            className={classes.modal_filter}
-            filterName="Classes"
-            resetFilter={resetFilter}
-            setSpellsFilter={setClassesFilterQuery}
-            spellsFilter={classesFilterQuery}
-          />
-        </Modal>
-        <MainButton
-          className={classes.clear_btn}
-          onClick={() => {
-            clearAllFilters();
-          }}
-        >Clear all</MainButton>
+          <Modal buttonClassName={classes.modal_btn} className={classes.filters_modal} modalName="Filters">
+            <div className={classes.modal_name}>Filters</div>
+            <hr />
+            <Filter
+              className={classes.modal_filter}
+              filter={levelFilterQuery}
+              filterName="Level"
+              resetFilter={resetFilter}
+              setFilter={setLevelFilterQuery}
+            />
+            <Filter
+              className={classes.modal_filter}
+              filter={schoolFilterQuery}
+              filterName="School"
+              resetFilter={resetFilter}
+              setFilter={setSchoolFilterQuery}
+            />
+            <Filter
+              className={classes.modal_filter}
+              filter={classesFilterQuery}
+              filterName="Classes"
+              resetFilter={resetFilter}
+              setFilter={setClassesFilterQuery}
+            />
+          </Modal>
+          <MainButton
+            className={classes.clear_btn}
+            onClick={() => {
+              clearAllFilters();
+            }}
+          >Clear all</MainButton>
+        </div>
+        <div className={classes.list}>
+          {nameFilteredSpells.map((spell) => {
+            return <Spell key={spell.name} spell={spell} />;
+          })}
+        </div>
       </div>
-      <div className={classes.list}>
-        {nameFilteredSpells.map((spell) => {
-          return <Spell key={spell.name} spell={spell} />;
-        })}
+      <div className={classes.spell_zone}>
+        Zone
       </div>
-    </>
+    </div>
   );
 };

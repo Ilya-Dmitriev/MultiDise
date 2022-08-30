@@ -1,25 +1,40 @@
 .spell_wrap {
+  max-width: 360px;
   padding: 5px;
-  padding-left: 20px;
-  font-family: "Roboto Flex", sans-serif;
+  font-family: $main_font;
   font-size: 16px;
   border: 2px solid $main_tx_cl;
+  border-radius: 8px;
 
   display: grid;
   gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
-    "level name ."
-    "level school .";
+    "level name"
+    "level school";
+
+  justify-content: start;
 
   .spell_name {
+    color: $main_tx_cl;
     grid-area: name;
   }
 
-  .spell_level {
+  .level_wrap {
     grid-area: level;
-    text-align: center;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: 1px solid black;
+    .spell_level {
+      width: 25px;
+      height: 25px;
+      font-family: $cursive_font;
+      font-size: 25px;
+      text-align: center;
+    }
   }
 
   .spell_school {

@@ -3,14 +3,18 @@
   display: flex;
 
   .spell_list {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
     .managebar {
       padding: 15px;
-      background-color: $main_bg_cl;
+      padding-bottom: 0px;
+      display: flex;
+      gap: 1em;
+
       .input {
         background-color: transparent;
-      }
-      .modal_btn {
-        margin-left: 1em;
       }
 
       .filters_modal {
@@ -31,36 +35,50 @@
           margin-top: 15px;
         }
       }
-
-      .clear_btn {
-        margin: 0;
-        margin-left: 1em;
-        padding: 7px;
-        font-size: 14px;
-        border-radius: 20px;
-
-        &:hover,
-        &.active {
-          margin: 0;
-          margin-left: 1em;
-          padding: 7px;
-          background-color: $main_tx_cl;
-          color: $main_bg_cl;
-        }
-      }
     }
 
     .list {
-      overflow: scroll;
-      height: calc(100% - #{$header_height});
-      padding: 15px;
-      padding-top: 0;
+      overflow-y: scroll;
+      @include gray-scroll;
+
+      height: 100%;
+      padding: 0 15px;
+
+      position: relative;
+
       display: flex;
       flex-direction: column;
-      gap: 25px;
-      background-color: $main_bg_cl;
+
+      .list_top_shadow,
+      .list_bottom_shadow {
+        display: block;
+        width: 100%;
+        min-height: 25px;
+        position: sticky;
+      }
+      .list_top_shadow {
+        top: 0;
+        background: linear-gradient(#{$main_bg_cl}, #{$main_bg_cl}, rgba($main_bg_cl, 0.6), rgba(#fff, 0));
+      }
+      .list_bottom_shadow {
+        bottom: 0;
+        background: linear-gradient(rgba(#fff, 0), rgba($main_bg_cl, 0.6), #{$main_bg_cl}, #{$main_bg_cl});
+      }
+
+      .spell_item {
+        margin-bottom: 25px;
+      }
     }
   }
-  .spell_zone {
+
+  .content_wrap {
+    padding: 10px;
+    display: flex;
+    flex: 1;
+    .content_zone {
+      flex: 1;
+      border-radius: 30px;
+      background-color: $menu_bg_cl;
+    }
   }
 }

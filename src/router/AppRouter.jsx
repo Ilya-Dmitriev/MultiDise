@@ -1,20 +1,22 @@
 import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import { LayOut } from '../layouts/LayOut';
+import { routesInLayOuts } from './router';
 
-import { routes } from './router';
-
-const routeNodes = routes.map((route) => {
-  return <Route key={route.path} {...route} />;
+const routeNodes = routesInLayOuts.map((layout) => {
+  return <Route key={layout.key} element={layout.layoutElement}>
+    {layout.routes.map((route) => {
+      return <Route key={route.path} {...route} />;
+    })}
+  </Route>;
 });
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
-      <LayOut>
-        <Routes>{routeNodes}</Routes>
-      </LayOut>
+      <Routes>
+        {routeNodes}
+      </Routes>
     </BrowserRouter>
   );
 };

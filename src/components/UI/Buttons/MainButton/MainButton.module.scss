@@ -1,6 +1,4 @@
 .btn {
-  padding: 12px;
-  margin: 5px;
   font-family: $main_font;
   text-transform: uppercase;
   text-decoration: none;
@@ -9,7 +7,12 @@
   color: $main_tx_cl;
   text-align: center;
   border: 1px solid $main_tx_cl;
+  background: transparent;
+}
 
+.primary {
+  padding: 12px;
+  margin: 5px;
   &:hover {
     padding: 9px;
     margin: 8px;
@@ -26,6 +29,15 @@
   }
 }
 
-.primary {
-  background: transparent;
+.round {
+  padding: 7px;
+  font-size: 14px;
+  border-radius: 20px;
+
+  &:hover,
+  &.active {
+    padding: 7px;
+    background-color: $main_tx_cl;
+    color: $main_bg_cl;
+  }
 }

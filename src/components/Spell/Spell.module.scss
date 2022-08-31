@@ -1,10 +1,9 @@
 .spell_wrap {
-  max-width: 360px;
   padding: 5px;
   font-family: $main_font;
   font-size: 16px;
-  border: 2px solid $main_tx_cl;
   border-radius: 8px;
+  background-color: rgba($main_tx_cl, 0.1);
 
   display: grid;
   gap: 10px;

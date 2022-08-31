@@ -18,7 +18,7 @@ module.exports = {
           },
         },
         sassLoaderOptions: {
-          additionalData: '@import "variables";',
+          additionalData: '@import "variables"; @import "mixins";',
           sassOptions: {
             includePaths: [path.resolve(__dirname, '../src/sass')],
           },

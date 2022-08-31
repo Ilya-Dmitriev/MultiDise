@@ -8,5 +8,5 @@ export default {
 };
 
 export const Primary = () => {
-  return <Spell spell={{ level: 'level', name: 'Spell name', school: 'school' }} />;
+  return <Spell spell={{ level: '1', name: 'Spell name', school: 'school' }} />;
 };

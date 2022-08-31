@@ -79,6 +79,8 @@ export const Spells = () => {
     resetFilter(classesFilterQuery, setClassesFilterQuery);
   };
 
+  const [content, setContent] = useState('simple');
+
   return (
     <div className={classes.spells_page}>
       <div className={classes.spell_list}>
@@ -116,20 +118,29 @@ export const Spells = () => {
             />
           </Modal>
           <MainButton
-            className={classes.clear_btn}
+            variant="round"
             onClick={() => {
               clearAllFilters();
             }}
           >Clear all</MainButton>
         </div>
-        <div className={classes.list}>
+        <div
+          className={classes.list}
+          onClick={(event) => {
+            setContent(event.target.innerHTML);
+          }}
+        >
+          <div className={classes.list_top_shadow} />
           {nameFilteredSpells.map((spell) => {
-            return <Spell key={spell.name} spell={spell} />;
+            return <Spell key={spell.name} className={classes.spell_item} spell={spell} />;
           })}
+          <div className={classes.list_bottom_shadow} />
         </div>
       </div>
-      <div className={classes.spell_zone}>
-        Zone
+      <div className={classes.content_wrap}>
+        <div className={classes.content_zone}>
+          {content}
+        </div>
       </div>
     </div>
   );

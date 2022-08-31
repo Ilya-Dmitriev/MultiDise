@@ -8,6 +8,8 @@ export default {
 };
 
 export const Primary = () => {
-  return <Filter filter={{ '1': true, '2': true, '3': true, '4': true, Cantrip: true }} />;
+  return <Filter
+    filter={{ '1': true, '2': true, '3': true, '4': true, Cantrip: true }}
+    filterName="Filter"
+  />;
 };
-

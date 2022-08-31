@@ -8,12 +8,13 @@ import classes from './Modal.module.scss';
 export const Modal = ({ buttonClassName, className, modalName, children }) => {
   const [modal, setModal] = useState(false);
   const modalClasses = clsx(classes.modal, modal && classes.visible, className);
-  const buttonClasses = clsx(classes.modal_btn, modal && classes.active, buttonClassName);
+  const buttonClasses = clsx(modal && classes.active, buttonClassName);
 
   return (
     <>
       <MainButton
         className={buttonClasses}
+        variant="round"
         onClick={() => {
           setModal(true);
         }}

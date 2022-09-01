@@ -2,6 +2,7 @@
   padding: 5px;
   font-family: $main_font;
   font-size: 16px;
+  text-decoration: none;
   border-radius: 8px;
   background-color: rgba($main_tx_cl, 0.1);
 
@@ -16,17 +17,21 @@
   justify-content: start;
 
   .spell_name {
-    color: $main_tx_cl;
     grid-area: name;
+    color: $main_tx_cl;
   }
 
   .level_wrap {
     grid-area: level;
     width: 50px;
+    color: black;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     border-right: 1px solid black;
+
     .spell_level {
       width: 25px;
       height: 25px;
@@ -38,5 +43,6 @@
 
   .spell_school {
     grid-area: school;
+    color: black;
   }
 }

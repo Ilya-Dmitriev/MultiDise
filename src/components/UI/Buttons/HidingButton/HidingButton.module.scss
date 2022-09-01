@@ -7,8 +7,7 @@ $border-color: 1px solid $main_tx_cl;
   color: $main_tx_cl;
   background: none;
   border: none;
-  box-shadow: -1px 0px 0px 0px $main_tx_cl, 1px 0px 0px 0px $main_tx_cl;
-  background-color: $main_bg_cl;
+  // box-shadow: -1px 0px 0px 0px $main_tx_cl, 1px 0px 0px 0px $main_tx_cl;
 
   &::after,
   &::before {

@@ -1,25 +1,26 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import clsx from 'clsx';
-import classes from './Spell.module.scss';
+import classes from './SpellLink.module.scss';
 
-export const Spell = ({ spell, className }) => {
+export const SpellLink = ({ spell, className, to }) => {
   const spellClasses = clsx(className, classes.spell_wrap);
 
   return (
-    <div className={spellClasses}>
+    <Link className={spellClasses} to={to}>
       <div className={classes.spell_name}>
-        <strong>{`${spell.name}`}</strong>
+        {spell.name}
       </div>
       <div className={classes.level_wrap}>
         <div className={classes.spell_level}>
-          {`${spell.level[0]}`}
+          {spell.level[0]}
         </div>
       </div>
       <div className={classes.spell_school}>
-        <i>{`${spell.school}`}</i>
+        <i>{spell.school}</i>
       </div>
-    </div>
+    </Link>
   );
 };
 

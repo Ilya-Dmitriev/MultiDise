@@ -1,0 +1,60 @@
+$level_size: 40px;
+
+.spell_window {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .header {
+    padding: 10px;
+    display: flex;
+    align-items: baseline;
+    background-color: rgb(248, 246, 148);
+    border-bottom: 1px solid $main_tx_cl;
+    border-radius: 20px 20px 0 0;
+
+    .level {
+      width: $level_size;
+      height: $level_size;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba($main_tx_cl, $alpha: 0.5);
+      border-radius: calc(#{$level_size}/ 2);
+      .centerer_level {
+        width: 25px;
+        height: 25px;
+        font-family: $cursive_font;
+        font-size: 25px;
+        text-align: center;
+      }
+    }
+    .name {
+      padding-left: 20px;
+      display: flex;
+      font-size: 30px;
+      font-weight: 600;
+      color: $main_tx_cl;
+    }
+    .school {
+      padding-left: 20px;
+      font-style: italic;
+    }
+  }
+  .content {
+    overflow: auto;
+    @include gray-scroll;
+
+    .classes {
+      padding: 10px 20px;
+      display: flex;
+      border-bottom: 1px solid $main_tx_cl;
+      .spell_class {
+        margin-left: 10px;
+      }
+    }
+    .text {
+      padding: 0 20px;
+    }
+  }
+}

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import { Filter, Modal, Spell } from '../../components';
-import { MainButton, MainInput } from '../../components/UI';
+import { Filter, SpellLink, SpellWindow } from '../../components';
+import { HidingButton, MainInput, MainNavLink } from '../../components/UI';
 import { useListArrayFlipFilter } from '../../hooks/useListArrayFlipFilter';
 import { useListFlipFilter } from '../../hooks/useListFlipFilter';
 import { useStringFilter } from '../../hooks/useStringFilter';
@@ -52,7 +53,7 @@ export const Spells = () => {
     SORCERER: true,
     WIZARD: true,
   });
-  const classFilteredSpells = useListArrayFlipFilter(spells, 'classes', classesFilterQuery);
+  const classesFilteredSpells = useListArrayFlipFilter(spells, 'classes', classesFilterQuery);
 
   const [schoolFilterQuery, setSchoolFilterQuery] = useState({
     Abjuration: true,
@@ -62,7 +63,7 @@ export const Spells = () => {
     Necromancy: true,
     Transmutation: true,
   });
-  const schoolFilteredSpells = useListFlipFilter(classFilteredSpells, 'school', schoolFilterQuery);
+  const schoolFilteredSpells = useListFlipFilter(classesFilteredSpells, 'school', schoolFilterQuery);
 
   const [levelFilterQuery, setLevelFilterQuery] = useState({
     ...oneToNineFilters,
@@ -73,13 +74,74 @@ export const Spells = () => {
   const [nameFilterQuery, setNameFilterQuery] = useState('');
   const nameFilteredSpells = useStringFilter(levelFilteredSpells, 'name', nameFilterQuery);
 
+  const filteredSpellLinksList = useMemo(() => {
+    return nameFilteredSpells.map(({ name, level, school }) => {
+      return <SpellLink
+        key={name}
+        className={classes.spell_link_item}
+        spell={{
+          level,
+          name,
+          school,
+        }}
+        to={name.replaceAll(/\s+/gu, '-')}
+      />;
+    });
+  }, [nameFilteredSpells]);
+
+  const allFiltersClear = useMemo(() => {
+    let flag = 'true';
+
+    for (const key of Object.keys(classesFilterQuery)) {
+      flag = flag && classesFilterQuery[key];
+    }
+
+    for (const key of Object.keys(schoolFilteredSpells)) {
+      flag = flag && schoolFilteredSpells[key];
+    }
+
+    for (const key of Object.keys(levelFilterQuery)) {
+      flag = flag && levelFilterQuery[key];
+    }
+
+    flag = flag && !nameFilterQuery;
+
+    return flag;
+  }, [classesFilterQuery, schoolFilteredSpells, levelFilterQuery, nameFilterQuery]);
+
   const clearAllFilters = () => {
     resetFilter(levelFilterQuery, setLevelFilterQuery);
     resetFilter(schoolFilterQuery, setSchoolFilterQuery);
     resetFilter(classesFilterQuery, setClassesFilterQuery);
+    setNameFilterQuery('');
   };
 
-  const [content, setContent] = useState('simple');
+  const filterWindow = <div className={classes.filters_wrap}>
+    <div className={classes.windiow_name}>Filters</div>
+    <div className={classes.filters_windiow}>
+      <Filter
+        className={classes.filter}
+        filter={levelFilterQuery}
+        filterName="Level"
+        resetFilter={resetFilter}
+        setFilter={setLevelFilterQuery}
+      />
+      <Filter
+        className={classes.filter}
+        filter={schoolFilterQuery}
+        filterName="School"
+        resetFilter={resetFilter}
+        setFilter={setSchoolFilterQuery}
+      />
+      <Filter
+        className={classes.filter}
+        filter={classesFilterQuery}
+        filterName="Classes"
+        resetFilter={resetFilter}
+        setFilter={setClassesFilterQuery}
+      />
+    </div>
+  </div>;
 
   return (
     <div className={classes.spells_page}>
@@ -88,58 +150,40 @@ export const Spells = () => {
           <MainInput
             className={classes.input}
             placeholder="Search spells"
+            value={nameFilterQuery}
             onChange={({ target }) => {
               setNameFilterQuery(target.value);
             }}
           />
-          <Modal buttonClassName={classes.modal_btn} className={classes.filters_modal} modalName="Filters">
-            <div className={classes.modal_name}>Filters</div>
-            <hr />
-            <Filter
-              className={classes.modal_filter}
-              filter={levelFilterQuery}
-              filterName="Level"
-              resetFilter={resetFilter}
-              setFilter={setLevelFilterQuery}
-            />
-            <Filter
-              className={classes.modal_filter}
-              filter={schoolFilterQuery}
-              filterName="School"
-              resetFilter={resetFilter}
-              setFilter={setSchoolFilterQuery}
-            />
-            <Filter
-              className={classes.modal_filter}
-              filter={classesFilterQuery}
-              filterName="Classes"
-              resetFilter={resetFilter}
-              setFilter={setClassesFilterQuery}
-            />
-          </Modal>
-          <MainButton
-            variant="round"
+          <HidingButton
+            className={classes.clear_btn}
+            visible={!allFiltersClear}
             onClick={() => {
               clearAllFilters();
             }}
-          >Clear all</MainButton>
+          >Clear</HidingButton>
+          <MainNavLink
+            className={classes.filter_btn}
+            to="filter"
+            variant="round"
+          >
+            Filter
+          </MainNavLink>
         </div>
         <div
           className={classes.list}
-          onClick={(event) => {
-            setContent(event.target.innerHTML);
-          }}
         >
           <div className={classes.list_top_shadow} />
-          {nameFilteredSpells.map((spell) => {
-            return <Spell key={spell.name} className={classes.spell_item} spell={spell} />;
-          })}
+          {filteredSpellLinksList}
           <div className={classes.list_bottom_shadow} />
         </div>
       </div>
       <div className={classes.content_wrap}>
         <div className={classes.content_zone}>
-          {content}
+          <Routes>
+            <Route element={filterWindow} path="filter" />
+            <Route element={<SpellWindow className={classes.spell_content} />} path=":name" />
+          </Routes>
         </div>
       </div>
     </div>

@@ -27,7 +27,7 @@ export const routesInLayOuts = [
     routes: [
       {
         element: <Spells />,
-        path: '/spells',
+        path: '/spells/*',
       },
     ],
   },

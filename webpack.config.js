@@ -103,6 +103,7 @@ module.exports = {
     output: {
         filename: filename('.js'),
         path: PATHS.dist,
+        publicPath: '/',
     },
     plugins,
     resolve: {

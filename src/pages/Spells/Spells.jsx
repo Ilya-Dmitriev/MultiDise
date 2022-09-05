@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { Filter, SpellLink, SpellWindow } from '../../components';

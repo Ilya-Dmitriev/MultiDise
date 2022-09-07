@@ -1,23 +1,36 @@
-import React from 'react';
-
+import { To } from 'react-router-dom';
 import { HomeLayOut } from '../layouts/HomeLayOut/HomeLayOut';
 import { PageLayOut } from '../layouts/PageLayOut/PageLayOut';
 import { Home, NotFound, Spells } from '../pages';
 
-export const routesInLayOuts = [
+interface PageRoute {
+  element: React.ReactElement,
+  path: To,
+  key: React.Key,
+  index?: boolean,
+}
+
+interface LayOutRoute {
+  key: React.Key,
+  layoutElement: React.ReactElement,
+  routes: PageRoute[]
+}
+
+export const routesInLayOuts: LayOutRoute[] = [
   {
     key: 'homeLauOut',
     layoutElement: <HomeLayOut />,
     routes: [
       {
         element: <Home />,
-        index: true,
         path: '/',
+        key: 'home',
+        index: true,
       },
       {
         element: <NotFound />,
-        layout: <HomeLayOut />,
         path: '*',
+        key: 'notfound',
       },
     ],
   },
@@ -28,6 +41,7 @@ export const routesInLayOuts = [
       {
         element: <Spells />,
         path: '/spells/*',
+        key: 'spells',
       },
     ],
   },

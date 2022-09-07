@@ -4,7 +4,7 @@
   font-size: 16px;
   text-decoration: none;
   border-radius: 8px;
-  background-color: rgba($main_tx_cl, 0.1);
+  background: linear-gradient(to right, rgba($main_tx_cl, 0.2), rgba($main_tx_cl, 0.1));
 
   display: grid;
   gap: 10px;

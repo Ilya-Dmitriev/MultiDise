@@ -1,8 +1,7 @@
-import React from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { Navigation } from '../../components';
-import mainAsdressList from '../mainAsdressList';
+import { mainAsdressList } from '../mainAsdressList';
 
 import classes from './HomeLayOut.module.scss';
 

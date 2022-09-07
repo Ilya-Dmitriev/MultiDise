@@ -1,23 +1,24 @@
 import { useMemo, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import { FilterInterface, SpellInterface, WeightsInterface } from 'types/types';
 
 import { Filter, SpellLink, SpellWindow } from '../../components';
 import { HidingButton, MainInput, MainNavLink } from '../../components/UI';
 import { useListArrayFlipFilter } from '../../hooks/useListArrayFlipFilter';
 import { useListFlipFilter } from '../../hooks/useListFlipFilter';
 import { useStringFilter } from '../../hooks/useStringFilter';
-import spellsList from '../../mock/spells.json';
 import { namedAndCustomSort } from '../../utils/namedAndCustomSort';
-
+import spellsList from '../../mock/spells.json';
 import classes from './Spells.module.scss';
 
-const oneToFour = Object.fromEntries(
+
+const oneToFour: WeightsInterface = Object.fromEntries(
   Array.from({ length: 4 }).map((item, index) => {
     return [index + 1, index + 1];
   }),
 );
 
-const oneToNineFilters = Object.fromEntries(
+const oneToNineFilters: FilterInterface = Object.fromEntries(
   Array.from({
     length: 9,
   }).map((value, index) => {
@@ -25,8 +26,11 @@ const oneToNineFilters = Object.fromEntries(
   }),
 );
 
-const resetFilter = (filter, setFilter) => {
-  const resetedFilter = {};
+const resetFilter = (
+  filter: FilterInterface,
+  setFilter: React.Dispatch<React.SetStateAction<FilterInterface>>,
+): void => {
+  const resetedFilter: FilterInterface = {};
   for (const key in filter) {
     if (Object.prototype.hasOwnProperty.call(filter, key)) {
       resetedFilter[key] = true;
@@ -36,15 +40,14 @@ const resetFilter = (filter, setFilter) => {
   setFilter(resetedFilter);
 };
 
-const spellLevelSort = {
-  ...oneToFour,
-  argument: 'level',
+const spellLevelWeights: WeightsInterface = {
   Cantrip: 0,
+  ...oneToFour,
 };
-const spells = namedAndCustomSort(spellsList, spellLevelSort);
+const spells: SpellInterface[] = namedAndCustomSort(spellsList, spellLevelWeights, 'level');
 
-export const Spells = () => {
-  const [classesFilterQuery, setClassesFilterQuery] = useState({
+export const Spells: React.FC = () => {
+  const [classesFilterQuery, setClassesFilterQuery] = useState<FilterInterface>({
     ALCHEMIST: true,
     ARTIFICER: true,
     CLERIC: true,
@@ -53,9 +56,9 @@ export const Spells = () => {
     SORCERER: true,
     WIZARD: true,
   });
-  const classesFilteredSpells = useListArrayFlipFilter(spells, 'classes', classesFilterQuery);
+  const classesFilteredSpells: SpellInterface[] = useListArrayFlipFilter('classes', spells, classesFilterQuery);
 
-  const [schoolFilterQuery, setSchoolFilterQuery] = useState({
+  const [schoolFilterQuery, setSchoolFilterQuery] = useState<FilterInterface>({
     Abjuration: true,
     Conjuration: true,
     Divination: true,
@@ -63,18 +66,18 @@ export const Spells = () => {
     Necromancy: true,
     Transmutation: true,
   });
-  const schoolFilteredSpells = useListFlipFilter(classesFilteredSpells, 'school', schoolFilterQuery);
+  const schoolFilteredSpells: SpellInterface[] = useListFlipFilter('school', classesFilteredSpells, schoolFilterQuery);
 
-  const [levelFilterQuery, setLevelFilterQuery] = useState({
+  const [levelFilterQuery, setLevelFilterQuery] = useState<FilterInterface>({
     ...oneToNineFilters,
     Cantrip: true,
   });
-  const levelFilteredSpells = useListFlipFilter(schoolFilteredSpells, 'level', levelFilterQuery);
+  const levelFilteredSpells: SpellInterface[] = useListFlipFilter('level', schoolFilteredSpells, levelFilterQuery);
 
-  const [nameFilterQuery, setNameFilterQuery] = useState('');
-  const nameFilteredSpells = useStringFilter(levelFilteredSpells, 'name', nameFilterQuery);
+  const [nameFilterQuery, setNameFilterQuery] = useState<string>('');
+  const nameFilteredSpells: SpellInterface[] = useStringFilter('name', levelFilteredSpells, nameFilterQuery);
 
-  const filteredSpellLinksList = useMemo(() => {
+  const filteredSpellLinksList: React.ReactElement[] = useMemo(() => {
     return nameFilteredSpells.map(({ name, level, school }) => {
       return <SpellLink
         key={name}
@@ -89,27 +92,14 @@ export const Spells = () => {
     });
   }, [nameFilteredSpells]);
 
-  const allFiltersClear = useMemo(() => {
-    let flag = 'true';
+  const allFiltersClear: boolean = useMemo(() => {
+    return Object.values(classesFilterQuery).every(Boolean)
+      && Object.values(schoolFilterQuery).every(Boolean)
+      && Object.values(levelFilterQuery).every(Boolean)
+      && !nameFilterQuery;
+  }, [classesFilterQuery, schoolFilterQuery, levelFilterQuery, nameFilterQuery]);
 
-    for (const key of Object.keys(classesFilterQuery)) {
-      flag = flag && classesFilterQuery[key];
-    }
-
-    for (const key of Object.keys(schoolFilteredSpells)) {
-      flag = flag && schoolFilteredSpells[key];
-    }
-
-    for (const key of Object.keys(levelFilterQuery)) {
-      flag = flag && levelFilterQuery[key];
-    }
-
-    flag = flag && !nameFilterQuery;
-
-    return flag;
-  }, [classesFilterQuery, schoolFilteredSpells, levelFilterQuery, nameFilterQuery]);
-
-  const clearAllFilters = () => {
+  const clearAllFilters = (): void => {
     resetFilter(levelFilterQuery, setLevelFilterQuery);
     resetFilter(schoolFilterQuery, setSchoolFilterQuery);
     resetFilter(classesFilterQuery, setClassesFilterQuery);
@@ -165,7 +155,7 @@ export const Spells = () => {
           <MainNavLink
             className={classes.filter_btn}
             to="filter"
-            variant="round"
+            variant='round'
           >
             Filter
           </MainNavLink>

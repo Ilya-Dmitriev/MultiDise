@@ -1,14 +1,26 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 import { MainButton } from '../UI/index';
 
 import clsx from 'clsx';
 import classes from './Modal.module.scss';
 
-export const Modal = ({ buttonClassName, className, modalName, children }) => {
-  const [modal, setModal] = useState(false);
-  const modalClasses = clsx(classes.modal, modal && classes.visible, className);
-  const buttonClasses = clsx(modal && classes.active, buttonClassName);
+interface ModalProps {
+  buttonClassName: string,
+  className: string,
+  modalName: string,
+  children: React.ReactNode,
+}
+
+export const Modal: React.FC<ModalProps> = ({
+  buttonClassName,
+  className,
+  modalName,
+  children,
+}) => {
+  const [modal, setModal] = useState<boolean>(false);
+  const modalClasses: string = clsx(classes.modal, modal && classes.visible, className);
+  const buttonClasses: string = clsx(modal && classes.active, buttonClassName);
 
   return (
     <>
@@ -25,9 +37,6 @@ export const Modal = ({ buttonClassName, className, modalName, children }) => {
         className={modalClasses}
         onClick={() => {
           return setModal(false);
-        }}
-        onKeyDown={(event) => {
-          return event.code === 27 && setModal(false);
         }}
       >
         <div

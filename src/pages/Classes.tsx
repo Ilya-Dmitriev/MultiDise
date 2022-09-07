@@ -1,5 +1,5 @@
 import React from 'react';
 
-export const Classes = () => {
+export const Classes: React.FC = () => {
   return <div>Classes</div>;
 };

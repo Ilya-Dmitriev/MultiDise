@@ -4,9 +4,9 @@ const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 // const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const PATHS = {
+  // eslint-disable-next-line unicorn/no-unused-properties
   assets: 'assets',
   dist: path.resolve(__dirname, '../dist'),
   src: path.resolve(__dirname, '../src'),
@@ -35,34 +35,6 @@ module.exports = {
         test: /\.([jt]sx?|mjsx)$/u,
         use: ['babel-loader'],
       },
-      {
-        dependency: { not: ['url'] },
-        test: /\.(s[ac]|c)ss$/iu,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: { publicPath: '' },
-          },
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[local]--[hash:base64:5]',
-              },
-            },
-          },
-          'postcss-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              additionalData: '@import "variables"; @import "mixins";',
-              sassOptions: {
-                includePaths: [`${PATHS.src}/sass`],
-              },
-            },
-          },
-        ],
-      },
     ],
   },
   optimization: {
@@ -79,7 +51,6 @@ module.exports = {
   },
   output: {
     path: PATHS.dist,
-    publicPath: '/',
   },
   plugins,
   resolve: {

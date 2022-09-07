@@ -4,16 +4,14 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const PATHS = {
   assets: 'assets',
-  dist: path.resolve(__dirname, './dist'),
-  src: path.resolve(__dirname, './src'),
+  src: path.resolve(__dirname, '../src'),
 };
-
 const filename = (extension) => {
-  return (`[name].[hash]${extension}`);
+  return (`[name].[fullhash]${extension}`);
 };
 
 module.exports = {
-  devtool: 'sourse-map',
+  devtool: false,
   mode: 'production',
   module: {
     rules:
@@ -21,6 +19,34 @@ module.exports = {
         {
           generator: { filename: `${PATHS.assets}/img/${filename('[ext]')}` },
           test: /\.(png|jpe?g|gif|svg)$/iu,
+        },
+        {
+          dependency: { not: ['url'] },
+          test: /\.(s[ac]|c)ss$/iu,
+          use: [
+            {
+              loader: MiniCssExtractPlugin.loader,
+              options: { publicPath: '' },
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: '[local]--[hash:base64:5]',
+                },
+              },
+            },
+            'postcss-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                additionalData: '@import "variables"; @import "mixins";',
+                sassOptions: {
+                  includePaths: [`${PATHS.src}/sass`],
+                },
+              },
+            },
+          ],
         },
       ],
   },

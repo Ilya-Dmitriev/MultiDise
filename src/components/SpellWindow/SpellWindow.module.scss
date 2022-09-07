@@ -49,8 +49,8 @@ $level_size: 40px;
       padding: 10px 20px;
       display: flex;
       border-bottom: 1px solid $main_tx_cl;
-      .spell_class {
-        margin-left: 10px;
+      b {
+        padding-right: 1em;
       }
     }
     .text {

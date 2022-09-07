@@ -1,10 +1,22 @@
 {
-  "extends": ["canonical"],
-  "ignorePatterns": ["package.json"],
+  "extends": [
+    "canonical"
+  ],
+  "ignorePatterns": [
+    "package.json"
+  ],
   "overrides": [
     {
-      "extends": ["canonical/react"],
-      "files": ["*.jsx", "*.js"],
+      "extends": [
+        "canonical/react",
+        "plugin:@typescript-eslint/recommended"
+      ],
+      "files": [
+        "*.tsx",
+        "*.ts",
+        "*.jsx",
+        "*.js"
+      ],
       "rules": {
         "@babel/object-curly-spacing": 0,
         "array-bracket-newline": 0,
@@ -23,17 +35,26 @@
           }
         ],
         "import/order": 0,
-        "jsx-quotes": ["warn", "prefer-double"],
+        "jsx-quotes": [
+          "warn",
+          "prefer-double"
+        ],
         "no-extra-parens": 0,
         "object-curly-newline": 0,
         "object-property-newline": 0,
+        "operator-linebreak": [
+          "error",
+          "before"
+        ],
         "react/forbid-component-props": 0,
         "react/jsx-sort-props": [
           2,
           {
             "callbacksLast": true,
             "ignoreCase": true,
-            "reservedFirst": ["key"],
+            "reservedFirst": [
+              "key"
+            ],
             "shorthandLast": true
           }
         ],
@@ -42,14 +63,38 @@
           "error",
           {
             "groups": [
-              ["^react"],
-              ["^@mui", "^assets"],
-              ["^components", "^hooks", "^pages", "^theme"],
-              ["^@planeta"],
-              ["^\\u0000"],
-              ["^\\.\\.(?!/?$)", "^\\.\\./?$"],
-              ["^\\./(?=.*/)(?!/?$)", "^\\.(?!/?$)", "^\\./?$"],
-              ["clsx", "^.*.scss"]
+              [
+                "^react"
+              ],
+              [
+                "^@mui",
+                "^assets"
+              ],
+              [
+                "^components",
+                "^hooks",
+                "^pages",
+                "^theme"
+              ],
+              [
+                "^@planeta"
+              ],
+              [
+                "^\\u0000"
+              ],
+              [
+                "^\\.\\.(?!/?$)",
+                "^\\.\\./?$"
+              ],
+              [
+                "^\\./(?=.*/)(?!/?$)",
+                "^\\.(?!/?$)",
+                "^\\./?$"
+              ],
+              [
+                "clsx",
+                "^.*.scss"
+              ]
             ]
           }
         ],
@@ -57,19 +102,31 @@
       }
     },
     {
-      "extends": ["canonical/json"],
+      "extends": [
+        "canonical/json"
+      ],
       "files": "*.json",
-      "parser": "jsonc-eslint-parser",
+      "parser": "@typescript/eslint-parser",
+      "parserOptions": {
+        "project": [
+          "./tsconfig.json"
+        ]
+      },
       "rules": {
         "jsonc/array-bracket-newline": 0,
         "jsonc/array-element-newline": 0
       }
     },
     {
-      "extends": ["canonical/yaml"],
+      "extends": [
+        "canonical/yaml"
+      ],
       "files": "*.yaml"
     }
   ],
-  "plugins": ["simple-import-sort"],
+  "plugins": [
+    "simple-import-sort",
+    "@typescript-eslint"
+  ],
   "root": true
 }

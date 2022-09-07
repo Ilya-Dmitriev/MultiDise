@@ -1,18 +1,24 @@
 /* eslint-disable no-undef */
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const PATHS = {
   assets: 'assets',
-  dist: path.resolve(__dirname, './dist'),
-  src: path.resolve(__dirname, './src'),
+  src: path.resolve(__dirname, '../src'),
 };
-
 const webpack = require('webpack');
 
 const filename = (extension) => {
   return (`[name]${extension}`);
 };
+
+const plugins = [
+  new webpack.SourceMapDevToolPlugin({ filename: '[file].map' }),
+];
+
+if (process.env.SERV) {
+  plugins.push(new ReactRefreshWebpackPlugin());
+}
 
 module.exports = {
   devServer: {
@@ -30,14 +36,39 @@ module.exports = {
           generator: { filename: `${PATHS.assets}/img/${filename('[ext]')}` },
           test: /\.(png|jpe?g|gif|svg)$/iu,
         },
+        {
+          dependency: { not: ['url'] },
+          test: /\.(s[ac]|c)ss$/iu,
+          use: [
+            {
+              loader: 'style-loader',
+            },
+            {
+              loader: 'css-loader',
+              options: {
+                modules: {
+                  localIdentName: '[local]--[hash:base64:5]',
+                },
+              },
+            },
+            'postcss-loader',
+            {
+              loader: 'sass-loader',
+              options: {
+                additionalData: '@import "variables"; @import "mixins";',
+                sassOptions: {
+                  includePaths: [`${PATHS.src}/sass`],
+                },
+              },
+            },
+          ],
+        },
       ],
   },
   output: {
     filename: filename('.js'),
+    publicPath: process.env.SERV ? '/' : '',
   },
-  plugins: [
-    new MiniCssExtractPlugin({ filename: filename('.css') }),
-    new webpack.SourceMapDevToolPlugin({ filename: '[file].map' }),
-  ],
+  plugins,
   target: 'web',
 };

@@ -1,12 +1,12 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
+import { SpellInterface } from 'types/types';
 
 import spells from '../../mock/spells.json';
 
 import clsx from 'clsx';
 import classes from './SpellWindow.module.scss';
 
-const nullSpell = {
+const nullSpell: SpellInterface = {
   classes: ['---',
   ],
   level: '-',
@@ -15,13 +15,20 @@ const nullSpell = {
   text: '---',
 };
 
-export const SpellWindow = ({ className }) => {
+interface SpellWindowProps {
+  className: string
+}
+
+export const SpellWindow: React.FC<SpellWindowProps> = ({ className }) => {
   const { name } = useParams();
-  const spell = spells.find((someSpell) => {
-    return someSpell.name === name.replaceAll(/-/gu, ' ');
+  const spell: SpellInterface = spells.find((someSpell: SpellInterface) => {
+    return someSpell.name === name!.replaceAll(/-/gu, ' ');
   }) || nullSpell;
 
-  const windowClasses = clsx(className, classes.spell_window);
+  const windowClasses: string = clsx(className, classes.spell_window);
+
+  const classesNames: string = spell.classes.join(' ');
+
   return (
     <div className={windowClasses}>
       <div className={classes.header}>
@@ -40,20 +47,9 @@ export const SpellWindow = ({ className }) => {
       <div className={classes.content}>
         <div className={classes.classes}>
           <b>Classes:</b>
-          {spell.classes.map((spellClass) => {
-            return <div key={spellClass} className={classes.spell_class}>{spellClass}</div>;
-          })}
+          {classesNames}
         </div>
         <div className={classes.text}>
-          <p>{spell.text}</p>
-          <p>{spell.text}</p>
-          <p>{spell.text}</p>
-          <p>{spell.text}</p>
-          <p>{spell.text}</p>
-          <p>{spell.text}</p>
-          <p>{spell.text}</p>
-          <p>{spell.text}</p>
-          <p>{spell.text}</p>
           <p>{spell.text}</p>
         </div>
       </div>

@@ -7,16 +7,15 @@
   "overrides": [
     {
       "files": [
-        "*.js",
-        "*.jsx",
+        "*.tsx",
         "*.ts",
-        "*.tsx"
+        "*.jsx",
+        "*.js"
       ],
-      "parser": "@babel/eslint-parser",
+      "parser": "@typescript/eslint-parser",
       "parserOptions": {
         "ecmaFeatures": {
-          "jsx": true,
-          "tsx": true
+          "jsx": true
         }
       }
     }

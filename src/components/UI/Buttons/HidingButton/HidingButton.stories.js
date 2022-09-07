@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { HidingButton } from './HidingButton';
 
 export default {

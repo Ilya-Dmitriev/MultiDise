@@ -1,6 +1,10 @@
 import { useMemo } from 'react';
 
-export const useStringFilter = (arrayOfObjects, objectField, query) => {
+export const useStringFilter = (
+  objectField: string,
+  arrayOfObjects: any[],
+  query: string,
+): any[] => {
   const filteredArray = useMemo(() => {
     return [...arrayOfObjects].filter((object) => {
       return object[objectField].toLowerCase().includes(query.toLowerCase());

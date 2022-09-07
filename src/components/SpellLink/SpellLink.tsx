@@ -1,10 +1,19 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, To } from 'react-router-dom';
 
 import clsx from 'clsx';
 import classes from './SpellLink.module.scss';
 
-export const SpellLink = ({ spell, className, to }) => {
+interface SpellLinckProps {
+  spell: { name: string, level: string, school: string },
+  className: string,
+  to: To,
+}
+
+export const SpellLink: React.FC<SpellLinckProps> = ({
+  spell,
+  className,
+  to,
+}) => {
   const spellClasses = clsx(className, classes.spell_wrap);
 
   return (

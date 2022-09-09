@@ -1,14 +1,70 @@
-$border-color: 1px solid $main_tx_cl;
+$line-width: 1px;
 
 .hiding_btn {
-  padding: 2px;
+  padding: 0px;
+  color: $main_tx_cl;
+  font-size: 1.6rem;
+  white-space: nowrap;
+
   position: relative;
   overflow: hidden;
-  color: $main_tx_cl;
+
+  display: flex;
+  align-items: center;
+
   background: none;
   border: none;
-  // box-shadow: -1px 0px 0px 0px $main_tx_cl, 1px 0px 0px 0px $main_tx_cl;
 
+  .line_left,
+  .line_right {
+    display: none;
+  }
+}
+
+.line {
+  padding: 0 1em;
+  .line_left,
+  .line_right {
+    display: block;
+    width: 50%;
+    height: 1em;
+
+    position: absolute;
+    transition: all 0.5s;
+    background-color: inherit;
+    &::after {
+      display: block;
+      content: "";
+      height: $line-width;
+      width: 100%;
+
+      position: absolute;
+      top: calc(50% - #{$line_width});
+
+      background-color: $main_tx_cl;
+    }
+  }
+  .line_left {
+    left: 0;
+  }
+  .line_right {
+    right: 0;
+  }
+  &.visible {
+    .line_left {
+      left: calc(-50% - 1px - #{$line-width} + 1em);
+      box-shadow: $line-width 0 0 0 $main_tx_cl;
+      // border-left: $line-width solid $main_tx_cl;
+    }
+    .line_right {
+      box-shadow: -$line-width 0 0 0 $main_tx_cl;
+      right: calc(-50% - 1px - #{$line-width} + 1em);
+      // border-right: $line-width solid $main_tx_cl;
+    }
+  }
+}
+
+.collapse {
   &::after,
   &::before {
     display: block;
@@ -16,26 +72,24 @@ $border-color: 1px solid $main_tx_cl;
     position: absolute;
     left: -1px;
     right: -1px;
-    height: 49%;
+    height: calc(50% - $line-width / 2);
     transition: all 0.5s;
     background-color: inherit;
   }
   &::before {
     top: 0px;
-    transform: translateY(-90%);
-    border-bottom: $border-color;
+    border-bottom: $line-width solid $main_tx_cl;
   }
   &::after {
     bottom: 0px;
-    transform: translateY(90%);
-    border-top: $border-color;
+    border-top: $line-width solid $main_tx_cl;
   }
-  &.unvisible {
+  &.visible {
     &::before {
-      transform: translateY(0%);
+      top: calc(-50% + $line-width);
     }
     &::after {
-      transform: translateY(0%);
+      bottom: calc(-50% + $line-width);
     }
   }
 }

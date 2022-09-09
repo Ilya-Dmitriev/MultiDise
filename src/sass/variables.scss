@@ -1,11 +1,45 @@
-$main_bg_cl: rgb(255, 250, 244);
-$menu_bg_cl: rgb(255, 240, 222);
+//https://colorscheme.ru/#0u61Tw0w0w0w0
 
-$main_tx_cl: saddlebrown;
+//colors r - raw : p - pastel | d - dark : l - lite
+$r_orange: #ff7400;
+$p_d_orange_1: #bf7130;
+$p_d_orange_2: #a64b00;
+$p_l_orange_1: #ff9640;
+$p_l_orange_2: #ffb273;
 
+$r_yellow: #ffaa00;
+$p_d_yellow_1: #bf8f30;
+$p_d_yellow_2: #a66f00;
+$p_l_yellow_1: #ffbf40;
+$p_l_yellow_2: #ffd073;
+
+$r_red: #ff0000;
+$p_d_red_1: #bf3030;
+$p_d_red_2: #a60000;
+$p_l_red_1: #ff4040;
+$p_l_red_2: #ff7373;
+
+$r_teal: #009999;
+$p_d_teal_1: #1d7373;
+$p_d_teal_2: #006363;
+$p_l_teal_1: #33cccc;
+$p_l_teal_2: #5ccccc;
+
+//contented colors
+$main_bg_cl: adjust-color($p_l_yellow_2, $lightness: 24%);
+$menu_bg_cl: adjust-color($p_l_yellow_2, $lightness: 15%);
+$v1_bg_cl: adjust-color($r_yellow, $lightness: 44%);
+$v2_bg_cl: adjust-color($r_yellow, $lightness: 40%);
+
+$main_tx_cl: adjust-color($p_d_orange_2, $blackness: 10%);
+$second_tx_cl: adjust-color($p_d_yellow_2, $blackness: 10%);
+
+//fonst
 $cursive_font: "Comfortaa", cursive;
 $main_font: "Roboto", sans-serif;
 $header_font: "Rubik", sans-serif;
 
+//lauouts sizes
 $header_height: 52px;
 $footer_height: 50px;
+$scrollbar_width: 10px;

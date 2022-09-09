@@ -7,7 +7,6 @@
   .header {
     width: 100%;
     height: $header_height;
-    background-color: $menu_bg_cl;
   }
 
   .main {
@@ -15,10 +14,5 @@
     height: calc(100% - #{$header_height});
     flex-grow: 1;
     background-color: $main_bg_cl;
-
-    .not_found {
-      font-size: 30px;
-      font-weight: 900;
-    }
   }
 }

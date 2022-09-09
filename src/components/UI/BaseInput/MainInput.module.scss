@@ -1,13 +1,12 @@
-$font_size: 16px;
-
 .base_input {
-  padding: 5px;
-  padding-left: 10px;
-  font-size: $font_size;
+  padding: 0.3em;
+  padding-left: 0.6em;
+  font-size: 1.6rem;
   line-height: 100%;
   color: $main_tx_cl;
+  background-color: inherit;
   border: 1px solid $main_tx_cl;
-  border-radius: calc(#{$font_size}/ 2 + 6px);
+  border-radius: 1em;
   &:focus {
     outline: none;
   }

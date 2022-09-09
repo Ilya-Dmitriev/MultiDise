@@ -1,40 +1,53 @@
 .filter_bar {
-  display: flex;
-  gap: 5px;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 10px;
-  border: 1px solid $main_tx_cl;
-  border-radius: 10px;
+  min-width: min-content;
+  padding: 0.5em;
+  font-size: 1.6rem;
+  // border: 1px solid currentColor;
+  border-radius: 0.5em;
 
-  .filter_name {
-    margin-left: 2px;
-    font-size: 16px;
-    color: $main_tx_cl;
-  }
-  .clear_btn {
-    margin: 0 3px;
-    color: black;
-    font-size: 16px;
+  .filter_head {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: inherit;
+
+    .fake_line {
+      height: 0;
+      border-top: 1px solid currentColor;
+      overflow: hidden;
+    }
+
+    .filter_name {
+      margin: 0 1em;
+      color: $main_tx_cl;
+    }
+    .clear_btn {
+      color: black;
+      font-size: 1em;
+      background-color: inherit;
+    }
   }
 
-  .filter_swich {
+  .filter_swiches {
+    margin-top: 0.5em;
     display: flex;
     flex-wrap: wrap;
+    gap: 0.5em;
+    justify-content: center;
 
     .filter_key {
-      margin: 3px;
-      padding: 3px 6px;
-      border-radius: 3px;
+      color: #000000;
+      padding: 0.1em 0.3em;
+      border-radius: 0.2em;
       background-color: rgba($color: #000000, $alpha: 0.2);
 
       &:hover {
-        background-color: rgba($color: #000000, $alpha: 0.4);
+        background-color: rgba($color: #000000, $alpha: 0.3);
       }
 
       &.active {
-        background-color: rgba($color: #000000, $alpha: 0.6);
+        background-color: rgba($color: #000000, $alpha: 0.4);
       }
     }
   }

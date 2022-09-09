@@ -1,18 +1,31 @@
 @mixin gray-scroll {
   &::-webkit-scrollbar {
-    width: 10px;
-    height: inherit;
+    width: $scrollbar_width;
+    background-color: inherit;
   }
   &::-webkit-scrollbar-track {
     border-radius: 5px;
-    background-color: rgba($color: #000000, $alpha: 0.1);
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.1);
+    }
   }
   &::-webkit-scrollbar-thumb {
-    border: 3px solid rgba($color: #fff, $alpha: 0.5);
     border-radius: 5px;
+    border: 3px solid transparent;
+    background-clip: content-box;
     background-color: rgba($color: #000000, $alpha: 0.2);
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.3);
+    }
   }
   &::-webkit-scrollbar-button {
-    display: none;
+    width: $scrollbar_width;
+    height: $scrollbar_width;
   }
+}
+
+@mixin text_and_backg_colors_font_size($color, $f_size) {
+  color: $color;
+  background-color: $color;
+  font-size: $f_size;
 }

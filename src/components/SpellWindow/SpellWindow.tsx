@@ -9,7 +9,7 @@ import classes from './SpellWindow.module.scss';
 const nullSpell: SpellInterface = {
   classes: ['---',
   ],
-  level: '-',
+  level: 'X',
   name: 'Spell not found',
   school: '---',
   text: '---',
@@ -38,7 +38,7 @@ export const SpellWindow: React.FC<SpellWindowProps> = ({ className }) => {
           </div>
         </div>
         <div className={classes.name}>
-          {spell.name}
+          <b>{spell.name}</b>
         </div>
         <div className={classes.school}>
           {spell.school}

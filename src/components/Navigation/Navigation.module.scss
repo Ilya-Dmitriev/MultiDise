@@ -1,10 +1,11 @@
 .nav {
+  @include text_and_backg_colors_font_size($menu_bg_cl, 1.6rem);
+
   width: max-content;
   position: relative;
   display: flex;
   z-index: 10;
   flex-direction: column;
-  background-color: $menu_bg_cl;
 
   .links {
     display: flex;
@@ -13,10 +14,10 @@
     left: -200%;
     top: 50px;
     transition: left 0.5s;
+    background-color: inherit;
 
     &.active {
       left: 0;
     }
-    background-color: $menu_bg_cl;
   }
 }

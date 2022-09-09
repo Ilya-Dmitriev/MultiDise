@@ -1,4 +1,4 @@
-import { Link, To } from 'react-router-dom';
+import { NavLink, To } from 'react-router-dom';
 
 import clsx from 'clsx';
 import classes from './SpellLink.module.scss';
@@ -14,12 +14,20 @@ export const SpellLink: React.FC<SpellLinckProps> = ({
   className,
   to,
 }) => {
-  const spellClasses = clsx(className, classes.spell_wrap);
+  const spellClasses = (
+    { isActive }: { isActive: boolean }
+  ): string => {
+    return clsx(
+      className,
+      classes.spell_wrap,
+      isActive && classes.active,
+    );
+  }
 
   return (
-    <Link className={spellClasses} to={to}>
+    <NavLink className={spellClasses} to={to}>
       <div className={classes.spell_name}>
-        {spell.name}
+        <b>{spell.name}</b>
       </div>
       <div className={classes.level_wrap}>
         <div className={classes.spell_level}>
@@ -29,7 +37,7 @@ export const SpellLink: React.FC<SpellLinckProps> = ({
       <div className={classes.spell_school}>
         <i>{spell.school}</i>
       </div>
-    </Link>
+    </NavLink>
   );
 };
 

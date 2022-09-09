@@ -1,43 +1,44 @@
-$level_size: 40px;
-
 .spell_window {
   height: 100%;
   display: flex;
   flex-direction: column;
 
+  font-size: 1.6rem;
+  color: black;
+  background-color: $v1_bg_cl;
+
   .header {
-    padding: 10px;
+    padding: 1em;
     display: flex;
     align-items: baseline;
-    background-color: rgb(248, 246, 148);
+    background: linear-gradient(rgba($r_orange, 0.4), rgba($r_yellow, 0.4));
     border-bottom: 1px solid $main_tx_cl;
-    border-radius: 20px 20px 0 0;
+    border-radius: 1em 1em 0 0;
 
     .level {
-      width: $level_size;
-      height: $level_size;
+      min-width: 2.5em;
+      min-height: 2.5em;
       display: flex;
       justify-content: center;
       align-items: center;
-      background-color: rgba($main_tx_cl, $alpha: 0.5);
-      border-radius: calc(#{$level_size}/ 2);
+      background-color: rgba($p_d_orange_2, 0.5);
+      border-radius: 50%;
       .centerer_level {
-        width: 25px;
-        height: 25px;
+        width: 1em;
+        height: 1em;
         font-family: $cursive_font;
-        font-size: 25px;
+        font-size: 2.5rem;
         text-align: center;
       }
     }
     .name {
-      padding-left: 20px;
+      padding-left: 0.5em;
       display: flex;
-      font-size: 30px;
-      font-weight: 600;
+      font-size: 2em;
       color: $main_tx_cl;
     }
     .school {
-      padding-left: 20px;
+      padding-left: 1em;
       font-style: italic;
     }
   }
@@ -46,15 +47,16 @@ $level_size: 40px;
     @include gray-scroll;
 
     .classes {
-      padding: 10px 20px;
+      padding: 0.5em 1em;
       display: flex;
       border-bottom: 1px solid $main_tx_cl;
+      background-color: $v2_bg_cl;
       b {
-        padding-right: 1em;
+        padding-right: 0.5em;
       }
     }
     .text {
-      padding: 0 20px;
+      padding: 0 1em;
     }
   }
 }

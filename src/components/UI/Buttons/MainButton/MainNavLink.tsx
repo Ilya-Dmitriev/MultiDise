@@ -16,16 +16,20 @@ export const MainNavLink: React.FC<MainNavLinkProps> = ({
   className,
   variant = 'primary',
 }) => {
+  const navLinkClasses = (
+    { isActive }: { isActive: boolean }
+  ): string => {
+    return clsx(
+      className,
+      classes.btn,
+      classes[variant],
+      isActive && classes.active,
+    );
+  }
+
   return (
     <NavLink
-      className={({ isActive }) => {
-        return clsx(
-          className,
-          classes.btn,
-          classes[variant],
-          isActive && classes.active,
-        );
-      }}
+      className={navLinkClasses}
       to={to}
     >
       {children}

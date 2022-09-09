@@ -1,6 +1,7 @@
 .spells_page {
   height: 100%;
   display: flex;
+  font-size: 1.6rem;
 
   .spell_list {
     height: 100%;
@@ -8,25 +9,22 @@
     flex-direction: column;
 
     .managebar {
-      padding: 15px;
+      padding: 1em;
       padding-bottom: 0px;
       display: flex;
 
       .input {
-        width: 223px;
+        width: 13em;
         position: relative;
         z-index: 1;
-        background-color: $menu_bg_cl;
       }
 
       .filter_btn {
-        padding-left: 15px;
-        padding-right: 15px;
+        padding-left: 1em;
+        padding-right: 1em;
       }
 
       .clear_btn {
-        padding-left: 15px;
-        padding-right: 15px;
         background-color: $main_bg_cl;
       }
     }
@@ -36,7 +34,8 @@
       @include gray-scroll;
 
       height: 100%;
-      padding: 0 15px;
+      padding-left: 1em;
+      padding-right: calc(1em - $scrollbar_width);
 
       position: relative;
 
@@ -47,7 +46,7 @@
       .list_bottom_shadow {
         display: block;
         width: 100%;
-        min-height: 25px;
+        min-height: 1.5em;
         position: sticky;
       }
       .list_top_shadow {
@@ -59,21 +58,23 @@
         background: linear-gradient(rgba(#fff, 0), rgba($main_bg_cl, 0.6), #{$main_bg_cl}, #{$main_bg_cl});
       }
 
-      .spell_link_item {
-        margin: 10px 0;
+      .spell_link_item + .spell_link_item {
+        margin: 1.5em 0 0 0;
       }
     }
   }
 
   .content_wrap {
-    padding: 10px;
+    padding: 0.6em;
     display: flex;
     flex: 1;
 
     .content_zone {
+      overflow: hidden;
       flex: 1;
-      border-radius: 20px;
-      background-color: $menu_bg_cl;
+      border-radius: 1em;
+      color: $main_tx_cl;
+      background-color: $v1_bg_cl;
 
       .filters_wrap {
         height: 100%;
@@ -81,23 +82,44 @@
         flex-direction: column;
 
         .windiow_name {
-          padding: 20px;
-          font-size: 20px;
+          padding: 1em 0;
+
+          display: flex;
+          align-items: center;
+
+          font-size: 2rem;
           font-weight: bold;
-          background-color: rgb(248, 246, 148);
-          border-radius: 20px 20px 0 0;
-          border-bottom: 1px solid $main_tx_cl;
+
+          background: linear-gradient(rgba($p_l_orange_1, 0.15), $v1_bg_cl);
+          &::after,
+          &::before {
+            display: block;
+            content: "";
+            flex: 1;
+            height: 0.2em;
+            margin: 0 1em;
+            border-top: 1px solid currentColor;
+            border-bottom: 1px solid currentColor;
+          }
         }
 
         .filters_windiow {
-          margin: 0 5px 20px 20px;
-          padding-right: 5px;
-          overflow: auto;
+          margin: 1.2em;
+          margin-top: 0;
+          margin-right: calc(1em - $scrollbar_width);
+          padding-right: 0.2em;
+          overflow-y: scroll;
           @include gray-scroll;
 
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1em;
+          justify-content: space-evenly;
+          align-items: baseline;
+
           .filter {
-            margin-top: 15px;
-            background-color: $menu_bg_cl;
+            background-color: $v2_bg_cl;
+            flex-grow: 1;
           }
         }
       }

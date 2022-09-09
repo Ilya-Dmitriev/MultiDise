@@ -1,13 +1,13 @@
 .spell_wrap {
-  padding: 5px;
+  padding: 0.5em;
   font-family: $main_font;
-  font-size: 16px;
+  font-size: 1.6rem;
   text-decoration: none;
-  border-radius: 8px;
-  background: linear-gradient(to right, rgba($main_tx_cl, 0.2), rgba($main_tx_cl, 0.1));
+  border-radius: 0.5em;
+  background: linear-gradient(to right, rgba($p_d_orange_1, 0.2), rgba($r_yellow, 0.1));
 
   display: grid;
-  gap: 10px;
+  gap: 0.5em;
   grid-template-columns: auto;
   grid-template-rows: auto;
   grid-template-areas:
@@ -23,8 +23,7 @@
 
   .level_wrap {
     grid-area: level;
-    width: 50px;
-    color: black;
+    width: 3em;
 
     display: flex;
     justify-content: center;
@@ -33,16 +32,26 @@
     border-right: 1px solid black;
 
     .spell_level {
-      width: 25px;
-      height: 25px;
+      width: 1em;
+      height: 1em;
+
+      color: black;
       font-family: $cursive_font;
-      font-size: 25px;
+      font-size: 2.5rem;
       text-align: center;
+
+      // background-color: $p_d_orange_1;
+      // box-shadow: 0 0 0 0.2em $p_d_orange_1;
+      // border-radius: 50%;
     }
   }
 
   .spell_school {
     grid-area: school;
     color: black;
+  }
+
+  &.active {
+    background: linear-gradient(to right, rgba($p_d_orange_1, 0.4), rgba($r_yellow, 0.2));
   }
 }

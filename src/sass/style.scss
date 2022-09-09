@@ -1,3 +1,9 @@
-body {
+:root {
   font-family: $main_font;
+  font-size: 10px;
+}
+
+body {
+  background-color: $main_bg_cl;
+  color: $main_bg_cl;
 }

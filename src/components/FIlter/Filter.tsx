@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
 import { HidingButton } from '../UI/Buttons/HidingButton/HidingButton';
+import { FilterInterface } from 'types/types';
 
 import clsx from 'clsx';
 import classes from './Filter.module.scss';
-import { FilterInterface } from 'types/types';
 
 interface FilterProps {
   className: string,
@@ -63,13 +63,17 @@ export const Filter: React.FC<FilterProps> = ({
 
   return (
     <div className={filterClasses}>
-      <strong className={classes.filter_name}>{filterName}</strong>
-      <HidingButton
-        className={classes.clear_btn}
-        visible={clearButtonState}
-        onClick={onClearClick}
-      >Clear</HidingButton>
-      <div className={classes.filter_swich} onClick={onFiltersChange}>
+      <div className={classes.filter_head}>
+        <div className={classes.fake_line}>Clear</div>
+        <strong className={classes.filter_name}>{filterName}</strong>
+        <HidingButton
+          variant="collapse"
+          className={classes.clear_btn}
+          visible={clearButtonState}
+          onClick={onClearClick}
+        >Clear</HidingButton>
+      </div>
+      <div className={classes.filter_swiches} onClick={onFiltersChange}>
         {filtresButtons}
       </div>
     </div>

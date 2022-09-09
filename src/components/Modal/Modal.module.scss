@@ -1,4 +1,6 @@
 .modal {
+  font-size: 1.6em;
+
   user-select: none;
   position: fixed;
   z-index: 10;
@@ -16,8 +18,8 @@
   }
 
   .modal_content {
-    padding: 20px;
-    border-radius: 20px;
+    padding: 2em;
+    border-radius: 2em;
     background-color: $main_bg_cl;
   }
 }

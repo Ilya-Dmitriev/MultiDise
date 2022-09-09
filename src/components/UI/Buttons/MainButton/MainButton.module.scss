@@ -3,47 +3,46 @@
   display: block;
   align-items: baseline;
 
-  font-family: $main_font;
-  font-size: 16px;
-  line-height: 100%;
   color: $main_tx_cl;
+  font-family: $main_font;
+  font-size: 1.6rem;
+  line-height: 100%;
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
 
   border: 1px solid $main_tx_cl;
-  background-color: $menu_bg_cl;
+  background-color: inherit;
 }
 
 .primary {
-  padding: 12px;
-  margin: 5px;
-  &:hover {
-    padding: 9px;
-    margin: 8px;
-  }
+  padding: 0.6em;
+  margin: 0.3em;
 
+  &:hover {
+    padding: 0.4em;
+    margin: 0.5em;
+  }
   &.active {
     background-color: $main_tx_cl;
-    color: $menu_bg_cl;
+    color: unset;
 
     &:hover {
-      padding: 12px;
-      margin: 5px;
+      padding: 0.6em;
+      margin: 0.3em;
     }
   }
 }
 
 .round {
   margin: 0;
-  padding: 7px;
-  font-size: 14px;
-  border-radius: 20px;
+  padding: 0.5em;
+  font-size: 1.4rem;
+  border-radius: 1.5em;
 
   &:hover,
   &.active {
-    padding: 7px;
     background-color: $main_tx_cl;
-    color: $main_bg_cl;
+    color: unset;
   }
 }

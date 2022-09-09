@@ -149,9 +149,12 @@ export const Spells: React.FC = () => {
             className={classes.clear_btn}
             visible={!allFiltersClear}
             onClick={() => {
-              clearAllFilters();
+              if (!allFiltersClear) {
+                clearAllFilters();
+              }
             }}
-          >Clear</HidingButton>
+          >Clear all
+          </HidingButton>
           <MainNavLink
             className={classes.filter_btn}
             to="filter"

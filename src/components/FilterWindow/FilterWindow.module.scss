@@ -1,0 +1,47 @@
+.filters_wrap {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .windiow_name {
+    padding: 1em 0;
+
+    display: flex;
+    align-items: center;
+
+    font-size: 2rem;
+    font-weight: bold;
+
+    background: linear-gradient(rgba($p_l_orange_1, 0.15), $v1_bg_cl);
+    &::after,
+    &::before {
+      display: block;
+      content: "";
+      flex: 1;
+      height: 0.2em;
+      margin: 0 1em;
+      border-top: 1px solid currentColor;
+      border-bottom: 1px solid currentColor;
+    }
+  }
+
+  .filters_windiow {
+    margin: 1.2em;
+    margin-top: 0;
+    margin-right: calc(1em - $scrollbar_width);
+    padding-right: 0.2em;
+    overflow-y: scroll;
+    @include gray-scroll;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+    justify-content: space-evenly;
+    align-items: baseline;
+
+    .filter {
+      background-color: $v2_bg_cl;
+      flex-grow: 1;
+    }
+  }
+}

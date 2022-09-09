@@ -1,0 +1,60 @@
+.item_list {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .managebar {
+    padding: 1em;
+    padding-bottom: 0px;
+    display: flex;
+
+    .input {
+      width: 13em;
+      position: relative;
+      z-index: 1;
+    }
+
+    .filter_btn {
+      padding-left: 1em;
+      padding-right: 1em;
+    }
+
+    .clear_btn {
+      background-color: $main_bg_cl;
+    }
+  }
+
+  .list {
+    overflow-y: scroll;
+    @include gray-scroll;
+
+    height: 100%;
+    padding-left: 1em;
+    padding-right: calc(1em - $scrollbar_width);
+
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+
+    .list_top_shadow,
+    .list_bottom_shadow {
+      display: block;
+      width: 100%;
+      min-height: 1.5em;
+      position: sticky;
+    }
+    .list_top_shadow {
+      top: 0;
+      background: linear-gradient(#{$main_bg_cl}, #{$main_bg_cl}, rgba($main_bg_cl, 0.6), rgba(#fff, 0));
+    }
+    .list_bottom_shadow {
+      bottom: 0;
+      background: linear-gradient(rgba(#fff, 0), rgba($main_bg_cl, 0.6), #{$main_bg_cl}, #{$main_bg_cl});
+    }
+
+    .link_item + .link_item {
+      margin: 1.5em 0 0 0;
+    }
+  }
+}

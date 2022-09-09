@@ -10,8 +10,12 @@ export interface FilterInterface {
   [name: string | number]: boolean,
 }
 
+export interface PackOfFilters {
+  [name: string]: FilterInterface,
+}
+
 export interface WeightsInterface {
-  [name: string | number]: number
+  [name: string | number]: number,
 }
 
 export interface SpellInterface {

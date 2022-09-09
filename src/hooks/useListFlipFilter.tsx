@@ -1,21 +1,21 @@
 import { useMemo } from 'react';
-import { FilterInterface } from 'types/types';
+import { PackOfFilters } from 'types/types';
 
 export const useListFlipFilter = (
-  objectField: string,
+  filterName: string,
   arrayOfObjects: any[],
-  listQuery: FilterInterface,
+  filtersPack: PackOfFilters,
 ): any[] => {
-  const listQueryState = Object.values(listQuery).every(Boolean);
+  const filtersPackState = Object.values(filtersPack[filterName]).every(Boolean);
 
   const filteredArray = useMemo(() => {
-    if (listQueryState) {
+    if (filtersPackState) {
       return arrayOfObjects;
     }
 
     return arrayOfObjects.filter((object: any) => {
-      return !listQuery[object[objectField]];
+      return !filtersPack[filterName][object[filterName]];
     });
-  }, [listQueryState, arrayOfObjects, listQuery, objectField]);
+  }, [filtersPackState, arrayOfObjects, filtersPack, filterName]);
   return filteredArray;
 };

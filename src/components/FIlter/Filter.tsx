@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { HidingButton } from '../UI/Buttons/HidingButton/HidingButton';
-import { FilterInterface } from 'types/types';
+import { PackOfFilters } from 'types/types';
 
 import clsx from 'clsx';
 import classes from './Filter.module.scss';
@@ -8,45 +8,43 @@ import classes from './Filter.module.scss';
 interface FilterProps {
   className: string,
   filterName: string,
-  filter: FilterInterface,
-  setFilter: React.Dispatch<React.SetStateAction<FilterInterface>>,
-  resetFilter: (
-    filter: FilterInterface,
-    setFilter: React.Dispatch<React.SetStateAction<FilterInterface>>
+  filtersPack: PackOfFilters,
+  setFiltersPack: React.Dispatch<React.SetStateAction<PackOfFilters>>,
+  resetFiltersPack: (
+    resetPart: string,
+    filtersPack: PackOfFilters,
+    setFiltersPack: React.Dispatch<React.SetStateAction<PackOfFilters>>,
   ) => void,
 }
 
 export const Filter: React.FC<FilterProps> = ({
   className,
   filterName,
-  filter,
-  setFilter,
-  resetFilter,
+  filtersPack,
+  setFiltersPack,
+  resetFiltersPack,
 }) => {
-  const filterClasses: string = clsx(classes.filter_bar, className);
-
   const clearButtonState: boolean = useMemo(() => {
-    return !Object.values(filter).every(Boolean);
-  }, [filter]);
+    return !Object.values(filtersPack[filterName]).every(Boolean);
+  }, [filtersPack]);
 
   const onFiltersChange: React.MouseEventHandler<HTMLDivElement> = (event) => {
     if (!(event.currentTarget === event.target)) {
       //TODO: выяснить костыльность переопределения типа
-      const filterName: string = (event.target as HTMLElement).innerText
-      setFilter({
-        ...filter,
-        [filterName]: !filter[filterName],
-      });
+      const clickedProp: string = (event.target as HTMLElement).innerText
+      const changedFiltersPack = { ...filtersPack };
+      changedFiltersPack[filterName][clickedProp] = !filtersPack[filterName][clickedProp],
+        setFiltersPack(changedFiltersPack);
     }
   };
 
   const onClearClick: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (clearButtonState) {
-      resetFilter(filter, setFilter);
+      resetFiltersPack(filterName, filtersPack, setFiltersPack);
     }
   };
 
-  const filtresButtons: React.ReactElement[] = Object.keys(filter)
+  const filtresButtons: React.ReactElement[] = Object.keys(filtersPack[filterName])
     .sort((first, second) => {
       return Number.isInteger(Number(first)) && Number.isInteger(Number(second)) ? 1 : Number.isInteger(Number(second)) ? -1 : 0;
     })
@@ -54,12 +52,14 @@ export const Filter: React.FC<FilterProps> = ({
       return (
         <span
           key={filterKey}
-          className={clsx(classes.filter_key, !filter[filterKey] && classes.active)}
+          className={clsx(classes.filter_key, !filtersPack[filterName][filterKey] && classes.active)}
         >
           {filterKey}
         </span>
       );
     });
+
+  const filterClasses: string = clsx(classes.filter_bar, className);
 
   return (
     <div className={filterClasses}>

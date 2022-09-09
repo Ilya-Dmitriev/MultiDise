@@ -21,6 +21,9 @@
     .filter_name {
       margin: 0 1em;
       color: $main_tx_cl;
+      &::first-letter {
+        text-transform: capitalize;
+      }
     }
     .clear_btn {
       color: black;

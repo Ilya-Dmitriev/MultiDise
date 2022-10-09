@@ -3,8 +3,13 @@
   display: flex;
   font-size: 1.6rem;
 
+  .spells_links {
+    height: 100%;
+  }
+
   .content_wrap {
     padding: 0.6em;
+    padding-top: 0;
     display: flex;
     flex: 1;
 

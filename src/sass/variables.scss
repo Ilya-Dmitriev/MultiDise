@@ -30,9 +30,11 @@ $main_bg_cl: adjust-color($p_l_yellow_2, $lightness: 24%);
 $menu_bg_cl: adjust-color($p_l_yellow_2, $lightness: 15%);
 $v1_bg_cl: adjust-color($r_yellow, $lightness: 44%);
 $v2_bg_cl: adjust-color($r_yellow, $lightness: 40%);
+$v3_bg_cl: adjust-color($p_d_teal_2, $lightness: 10%);
 
 $main_tx_cl: adjust-color($p_d_orange_2, $blackness: 10%);
 $second_tx_cl: adjust-color($p_d_yellow_2, $blackness: 10%);
+$third_tx_cl: adjust-color($p_d_teal_2, $blackness: 10%);
 
 //fonst
 $cursive_font: "Comfortaa", cursive;
@@ -40,6 +42,7 @@ $main_font: "Roboto", sans-serif;
 $header_font: "Rubik", sans-serif;
 
 //lauouts sizes
-$header_height: 52px;
-$footer_height: 50px;
-$scrollbar_width: 10px;
+$container_max_widht: 1440px;
+$header_height: 5rem;
+$footer_height: 5rem;
+$scrollbar_width: 1rem;

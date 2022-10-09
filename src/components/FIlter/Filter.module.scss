@@ -2,8 +2,8 @@
   min-width: min-content;
   padding: 0.5em;
   font-size: 1.6rem;
-  // border: 1px solid currentColor;
   border-radius: 0.5em;
+  user-select: none;
 
   .filter_head {
     width: 100%;
@@ -12,12 +12,6 @@
     justify-content: center;
     background-color: inherit;
 
-    .fake_line {
-      height: 0;
-      border-top: 1px solid currentColor;
-      overflow: hidden;
-    }
-
     .filter_name {
       margin: 0 1em;
       color: $main_tx_cl;
@@ -25,9 +19,13 @@
         text-transform: capitalize;
       }
     }
-    .clear_btn {
+
+    .clear_btn,
+    .reverse_btn {
+      min-width: 4em;
       color: black;
       font-size: 1em;
+      justify-content: center;
       background-color: inherit;
     }
   }

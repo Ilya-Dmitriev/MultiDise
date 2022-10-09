@@ -88,9 +88,7 @@ export const ItemLinksManager: React.FC<ItemLinksManagerProps> = ({
       <div
         className={classes.list}
       >
-        <div className={classes.list_top_shadow} />
         {filteredItemLinksList}
-        <div className={classes.list_bottom_shadow} />
       </div>
     </div>
   )

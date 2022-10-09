@@ -1,15 +1,13 @@
 .item_list {
-  height: 100%;
   display: flex;
   flex-direction: column;
 
   .managebar {
-    padding: 1em;
-    padding-bottom: 0px;
+    padding: 0 1em;
     display: flex;
 
     .input {
-      width: 13em;
+      flex: 1;
       position: relative;
       z-index: 1;
     }
@@ -37,18 +35,19 @@
     display: flex;
     flex-direction: column;
 
-    .list_top_shadow,
-    .list_bottom_shadow {
+    &::after,
+    &::before {
       display: block;
+      content: "";
       width: 100%;
       min-height: 1.5em;
       position: sticky;
     }
-    .list_top_shadow {
+    &::before {
       top: 0;
       background: linear-gradient(#{$main_bg_cl}, #{$main_bg_cl}, rgba($main_bg_cl, 0.6), rgba(#fff, 0));
     }
-    .list_bottom_shadow {
+    &::after {
       bottom: 0;
       background: linear-gradient(rgba(#fff, 0), rgba($main_bg_cl, 0.6), #{$main_bg_cl}, #{$main_bg_cl});
     }

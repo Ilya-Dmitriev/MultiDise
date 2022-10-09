@@ -31,11 +31,19 @@ export const Filter: React.FC<FilterProps> = ({
   const onFiltersChange: React.MouseEventHandler<HTMLDivElement> = (event) => {
     if (!(event.currentTarget === event.target)) {
       //TODO: выяснить костыльность переопределения типа
-      const clickedProp: string = (event.target as HTMLElement).innerText
+      const clickedProp: string = (event.target as HTMLElement).innerText;
       const changedFiltersPack = { ...filtersPack };
-      changedFiltersPack[filterName][clickedProp] = !filtersPack[filterName][clickedProp],
-        setFiltersPack(changedFiltersPack);
+      changedFiltersPack[filterName][clickedProp] = !filtersPack[filterName][clickedProp];
+      setFiltersPack(changedFiltersPack);
     }
+  };
+
+  const onReverseClick: React.MouseEventHandler<HTMLButtonElement> = () => {
+    const reversedFilterInPack = { ...filtersPack };
+    for (const filterProp of Object.keys(filtersPack[filterName])) {
+      reversedFilterInPack[filterName][filterProp] = !reversedFilterInPack[filterName][filterProp]
+    };
+    setFiltersPack(reversedFilterInPack);
   };
 
   const onClearClick: React.MouseEventHandler<HTMLButtonElement> = () => {
@@ -64,7 +72,12 @@ export const Filter: React.FC<FilterProps> = ({
   return (
     <div className={filterClasses}>
       <div className={classes.filter_head}>
-        <div className={classes.fake_line}>Clear</div>
+        <HidingButton
+          variant="collapse"
+          className={classes.reverse_btn}
+          visible={clearButtonState}
+          onClick={onReverseClick}
+        >Reverse</HidingButton>
         <strong className={classes.filter_name}>{filterName}</strong>
         <HidingButton
           variant="collapse"
@@ -76,6 +89,6 @@ export const Filter: React.FC<FilterProps> = ({
       <div className={classes.filter_swiches} onClick={onFiltersChange}>
         {filtresButtons}
       </div>
-    </div>
+    </div >
   );
 };

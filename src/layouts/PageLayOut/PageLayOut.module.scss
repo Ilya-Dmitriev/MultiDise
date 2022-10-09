@@ -1,18 +1,12 @@
-.container {
+.wrapper {
   width: 100%;
+  max-width: $container_max_widht;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  .header {
-    width: 100%;
-    height: $header_height;
-  }
+  margin: auto;
 
   .main {
     width: 100%;
-    height: calc(100% - #{$header_height});
-    flex-grow: 1;
+    height: calc(100% - $header_height);
     background-color: $main_bg_cl;
   }
 }

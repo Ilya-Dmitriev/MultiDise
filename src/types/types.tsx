@@ -3,11 +3,18 @@ import { To } from 'react-router-dom';
 export interface LinkPath {
   path: To,
   title: string,
-  key: React.Key,
+  key?: React.Key,
+}
+
+export interface LinkNamedBundles {
+  name: string,
+  icon?: string,
+  paths: LinkPath[],
+  key?: React.Key,
 }
 
 export interface FilterInterface {
-  [name: string | number]: boolean,
+  [name: string]: boolean,
 }
 
 export interface PackOfFilters {

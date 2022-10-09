@@ -6,7 +6,7 @@ import classes from './MainButton.module.scss';
 interface MainButtonProps {
   children?: React.ReactNode,
   className?: string,
-  variant?: "primary" | "round",
+  variant?: "primary" | "round" | "default",
   onClick?: MouseEventHandler<HTMLButtonElement>,
 }
 

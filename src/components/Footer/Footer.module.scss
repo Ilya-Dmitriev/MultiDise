@@ -1,0 +1,14 @@
+.footer {
+  width: 100%;
+  height: $footer_height;
+
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $main_tx_cl;
+  font-size: 1.4rem;
+  background: linear-gradient(rgba(#000, 0), $menu_bg_cl);
+  box-shadow: inset 2em 0 1em -1em $main_bg_cl, inset -2em 0 1em -1em $main_bg_cl;
+}

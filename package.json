@@ -19,8 +19,6 @@
     "tools/*"
   ],
   "dependencies": {
-    "@types/react": "^18.0.18",
-    "@types/react-dom": "^18.0.6",
     "axios": "^0.27.2",
     "clsx": "^1.2.1",
     "react": "^18.2.0",
@@ -45,6 +43,8 @@
     "@storybook/preset-scss": "^1.0.3",
     "@storybook/react": "^6.1.21",
     "@storybook/testing-library": "^0.0.13",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "babel-loader": "^8.2.2",
     "clean-webpack-plugin": "^4.0.0-alpha.0",
     "copy-webpack-plugin": "^9.0.1",

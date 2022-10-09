@@ -7,7 +7,7 @@ interface MainNavLinkProps {
   to: To,
   children?: React.ReactNode,
   className?: string,
-  variant?: 'primary' | 'round'
+  variant?: 'primary' | 'round' | 'default'
 }
 
 export const MainNavLink: React.FC<MainNavLinkProps> = ({

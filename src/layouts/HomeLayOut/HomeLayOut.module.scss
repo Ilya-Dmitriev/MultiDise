@@ -1,32 +1,12 @@
-.container {
+.wrapper {
   width: 100%;
+  max-width: $container_max_widht;
   height: 100vh;
-  display: flex;
-  flex-direction: column;
-
-  .header {
-    width: 100%;
-    height: $header_height;
-  }
+  margin: auto;
 
   .main {
     width: 100%;
-    height: calc(100% - #{$header_height} - #{$footer_height});
-    flex-grow: 1;
+    height: calc(100% - $header_height - $footer_height);
     background-color: $main_bg_cl;
-  }
-
-  .footer {
-    width: 100%;
-    height: $footer_height;
-
-    flex-shrink: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: $main_tx_cl;
-    font-size: 1.4rem;
-    background-color: $menu_bg_cl;
   }
 }

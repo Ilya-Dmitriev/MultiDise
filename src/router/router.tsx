@@ -1,7 +1,7 @@
 import { To } from 'react-router-dom';
 import { HomeLayOut } from '../layouts/HomeLayOut/HomeLayOut';
 import { PageLayOut } from '../layouts/PageLayOut/PageLayOut';
-import { Home, NotFound, Spells } from '../pages';
+import { Home, NotFound, Spells, Classes } from '../pages';
 
 interface PageRoute {
   element: React.ReactElement,
@@ -42,6 +42,11 @@ export const routesInLayOuts: LayOutRoute[] = [
         element: <Spells />,
         path: '/spells/*',
         key: 'spells',
+      },
+      {
+        element: <Classes />,
+        path: '/classes/*',
+        key: 'classes',
       },
     ],
   },

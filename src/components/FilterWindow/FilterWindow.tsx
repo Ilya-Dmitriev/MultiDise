@@ -1,4 +1,4 @@
-import { PackOfFilters } from "types/types"
+import { PackOfFilters, PropsWeigthsInterface } from "types/types"
 import { Filter } from "../"
 
 import clsx from "clsx"
@@ -7,6 +7,7 @@ import classes from './FilterWindow.module.scss'
 interface FilterWindowProps {
   className: string,
   filtersPack: PackOfFilters,
+  filtersWeigths: PropsWeigthsInterface,
   setFiltersPack: React.Dispatch<React.SetStateAction<PackOfFilters>>,
   resetFiltersPack: (
     resetPart: string,
@@ -18,19 +19,24 @@ interface FilterWindowProps {
 export const FilterWindow: React.FC<FilterWindowProps> = ({
   className,
   filtersPack,
+  filtersWeigths,
   setFiltersPack,
   resetFiltersPack,
 }) => {
-  const filersElements: React.ReactElement[] = Object.keys(filtersPack).map((filterName): React.ReactElement => {
-    return <Filter
-      key={filterName}
-      className={classes.filter}
-      filterName={filterName}
-      filtersPack={filtersPack}
-      setFiltersPack={setFiltersPack}
-      resetFiltersPack={resetFiltersPack}
-    />
-  })
+  const filersElements: React.ReactElement[] = Object
+    .keys(filtersPack)
+    .sort((first, second) => filtersWeigths.props[first] - filtersWeigths.props[second])
+    .map((filterName): React.ReactElement => {
+      return <Filter
+        key={filterName}
+        className={classes.filter}
+        filterName={filterName}
+        filtersPack={filtersPack}
+        filterWeigths={filtersWeigths[filterName]}
+        setFiltersPack={setFiltersPack}
+        resetFiltersPack={resetFiltersPack}
+      />
+    })
 
   const filterWindowClasses: string = clsx(className, classes.filters_wrap)
 

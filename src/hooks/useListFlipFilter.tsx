@@ -1,11 +1,11 @@
 import { useMemo } from 'react';
 import { PackOfFilters } from 'types/types';
 
-export const useListFlipFilter = (
+export function useListFlipFilter<T>(
   filterName: string,
-  arrayOfObjects: any[],
+  arrayOfObjects: T[],
   filtersPack: PackOfFilters,
-): any[] => {
+): T[] {
   const filtersPackState = Object.values(filtersPack[filterName]).every(Boolean);
 
   const filteredArray = useMemo(() => {

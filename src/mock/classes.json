@@ -1,0 +1,62 @@
+[
+  {
+    "name": "Barbarian",
+    "sourse": "PHB",
+    "hitDise": "d12"
+  },
+  {
+    "name": "Bard",
+    "sourse": "PHB",
+    "hitDise": "d8"
+  },
+  {
+    "name": "Cleric",
+    "sourse": "PHB",
+    "hitDise": "d8"
+  },
+  {
+    "name": "Druid",
+    "sourse": "PHB",
+    "hitDise": "d8"
+  },
+  {
+    "name": "Fighter",
+    "sourse": "PHB",
+    "hitDise": "d10"
+  },
+  {
+    "name": "Monk",
+    "hitDise": "d8",
+    "sourse": "PHB"
+  },
+  {
+    "name": "Ranger",
+    "hitDise": "d10",
+    "sourse": "PHB"
+  },
+  {
+    "name": "Rogue",
+    "hitDise": "d8",
+    "sourse": "PHB"
+  },
+  {
+    "name": "Sorcerer",
+    "hitDise": "d6",
+    "sourse": "PHB"
+  },
+  {
+    "name": "Warlock",
+    "hitDise": "d8",
+    "sourse": "PHB"
+  },
+  {
+    "name": "Wizard",
+    "hitDise": "d6",
+    "sourse": "PHB"
+  },
+  {
+    "name": "Artificer",
+    "hitDise": "d8",
+    "sourse": "TCoE"
+  }
+]

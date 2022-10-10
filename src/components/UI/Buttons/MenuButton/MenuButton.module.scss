@@ -54,14 +54,14 @@ $menu_lines_haight: 2px;
 
   &.active {
     .top_s {
-      right: -$menu_lines_haight / 2;
+      right: calc($menu_lines_haight / -2);
       transform: rotate(45deg);
     }
     .mid_s {
       display: none;
     }
     .bot_s {
-      right: -$menu_lines_haight / 2;
+      right: calc($menu_lines_haight / -2);
       transform: rotate(-45deg);
     }
   }

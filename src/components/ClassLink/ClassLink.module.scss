@@ -1,0 +1,41 @@
+.dnd_class_wrap {
+  padding: 1em;
+  font-family: $main_font;
+  font-size: 1.6rem;
+  text-decoration: none;
+  border-radius: 0.5em;
+  background: linear-gradient(to right, rgba($p_d_orange_1, 0.2), rgba($r_yellow, 0.1));
+
+  display: grid;
+  gap: 0.5em;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
+  grid-template-areas:
+    "name hitDise"
+    "sourse .";
+
+  justify-content: start;
+
+  .dnd_class_name {
+    grid-area: name;
+    color: $main_tx_cl;
+  }
+  .dnd_class_sourse {
+    grid-area: sourse;
+    width: 1em;
+    height: 1em;
+
+    color: black;
+    font-family: $cursive_font;
+    text-align: center;
+  }
+
+  .dnd_class_hitDise {
+    grid-area: hitDise;
+    color: black;
+  }
+
+  &.active {
+    background: linear-gradient(to right, rgba($p_d_orange_1, 0.4), rgba($r_yellow, 0.2));
+  }
+}

@@ -1,0 +1,43 @@
+.class_window {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  font-size: 1.6rem;
+  color: black;
+  background-color: $v1_bg_cl;
+
+  .header {
+    padding: 1em;
+    display: flex;
+    align-items: baseline;
+    background: linear-gradient(rgba($r_orange, 0.4), rgba($r_yellow, 0.4));
+    border-bottom: 1px solid $main_tx_cl;
+    border-radius: 1em 1em 0 0;
+
+    .name {
+      padding-left: 0.5em;
+      display: flex;
+      font-size: 2em;
+      color: $main_tx_cl;
+    }
+    .sourse {
+      padding-left: 1em;
+      font-style: italic;
+    }
+  }
+  .content {
+    overflow: auto;
+    @include gray-scroll;
+
+    .hit_dise {
+      padding: 0.5em 1em;
+      display: flex;
+      border-bottom: 1px solid $main_tx_cl;
+      background-color: $v2_bg_cl;
+      b {
+        padding-right: 0.5em;
+      }
+    }
+  }
+}

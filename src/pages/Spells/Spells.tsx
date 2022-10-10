@@ -1,30 +1,16 @@
 import { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
-import { FilterInterface, PackOfFilters, SpellInterface, WeightsInterface } from 'types/types';
+import { PackOfFilters, PropsWeigthsInterface, SpellInterface, WeightsInterface } from 'types/types';
 
 import { FilterWindow, SpellWindow, ItemLinksManager, SpellLink } from '../../components';
 import { useListArrayFlipFilter } from '../../hooks/useListArrayFlipFilter';
 import { useListFlipFilter } from '../../hooks/useListFlipFilter';
-import { namedAndCustomSort } from '../../utils/namedAndCustomSort';
+import { namedAndCustomSort } from '../../utils';
 
 import spellsList from '../../mock/spells.json';
 
 import classes from './Spells.module.scss';
-
-
-const oneToFour: WeightsInterface = Object.fromEntries(
-  Array.from({ length: 4 }).map((item, index) => {
-    return [index + 1, index + 1];
-  }),
-);
-
-const oneToNineFilters: FilterInterface = Object.fromEntries(
-  Array.from({
-    length: 9,
-  }).map((value, index) => {
-    return [index + 1, true];
-  }),
-);
+import { createPackOfFilters } from '../../utils/createPackOfFilters';
 
 const resetFilter = (
   resetPart: 'level' | 'school' | 'classes' | 'all' | string,
@@ -52,36 +38,30 @@ const resetFilter = (
   setFilterPack(resetedFilters);
 };
 
-const spellLevelWeights: WeightsInterface = {
-  Cantrip: 0,
-  ...oneToFour,
+const oneToFour: WeightsInterface = Object.fromEntries(
+  Array.from({ length: 9 }).map((item, index) => {
+    return [index + 1, index + 1];
+  }),
+);
+
+const spellsParamsWeights: PropsWeigthsInterface = {
+  props: {
+    level: 0,
+    school: 1,
+    classes: 2,
+  },
+  level: {
+    Cantrip: 0,
+    ...oneToFour,
+  }
+
 };
-const spells: SpellInterface[] = namedAndCustomSort(spellsList, spellLevelWeights, 'level');
+const spells: SpellInterface[] = namedAndCustomSort(spellsList, spellsParamsWeights.level, 'level');
+
+const spellsFiltersStatic = createPackOfFilters(spellsList, ["name", "text"])
 
 export const Spells: React.FC = () => {
-  const [spellsFilters, setSpellsFilters] = useState<PackOfFilters>({
-    level: {
-      ...oneToNineFilters,
-      Cantrip: true,
-    },
-    school: {
-      Abjuration: true,
-      Conjuration: true,
-      Divination: true,
-      Evocation: true,
-      Necromancy: true,
-      Transmutation: true,
-    },
-    classes: {
-      ALCHEMIST: true,
-      ARTIFICER: true,
-      CLERIC: true,
-      DRUID: true,
-      RANGER: true,
-      SORCERER: true,
-      WIZARD: true,
-    }
-  })
+  const [spellsFilters, setSpellsFilters] = useState<PackOfFilters>(spellsFiltersStatic)
 
   const classesFilteredSpells: SpellInterface[] = useListArrayFlipFilter('classes', spells, spellsFilters);
   const schoolFilteredSpells: SpellInterface[] = useListFlipFilter('school', classesFilteredSpells, spellsFilters);
@@ -116,6 +96,7 @@ export const Spells: React.FC = () => {
             <Route element={<FilterWindow
               className={classes.spell_filters}
               filtersPack={spellsFilters}
+              filtersWeigths={spellsParamsWeights}
               setFiltersPack={setSpellsFilters}
               resetFiltersPack={resetFilter}
             />} path="filter" />

@@ -7,3 +7,5 @@ export { FilterWindow } from './FilterWindow/FilterWindow';
 export { ItemLinksManager } from './ItemLinksManager/ItemLinksManager';
 export { Header } from './Header/Header';
 export { Footer } from './Footer/Footer';
+export { ClassLink } from './ClassLink/ClassLink';
+export { ClassWindow } from './ClassWindow/ClassWindow';

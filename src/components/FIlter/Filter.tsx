@@ -4,11 +4,13 @@ import { PackOfFilters } from 'types/types';
 
 import clsx from 'clsx';
 import classes from './Filter.module.scss';
+import { WeightsInterface } from '../../types/types';
 
 interface FilterProps {
   className: string,
   filterName: string,
   filtersPack: PackOfFilters,
+  filterWeigths?: WeightsInterface,
   setFiltersPack: React.Dispatch<React.SetStateAction<PackOfFilters>>,
   resetFiltersPack: (
     resetPart: string,
@@ -21,6 +23,7 @@ export const Filter: React.FC<FilterProps> = ({
   className,
   filterName,
   filtersPack,
+  filterWeigths,
   setFiltersPack,
   resetFiltersPack,
 }) => {
@@ -53,9 +56,9 @@ export const Filter: React.FC<FilterProps> = ({
   };
 
   const filtresButtons: React.ReactElement[] = Object.keys(filtersPack[filterName])
-    .sort((first, second) => {
-      return Number.isInteger(Number(first)) && Number.isInteger(Number(second)) ? 1 : Number.isInteger(Number(second)) ? -1 : 0;
-    })
+    .sort(filterWeigths
+      ? (first, second) => filterWeigths[first] - filterWeigths[second]
+      : undefined)
     .map((filterKey: string) => {
       return (
         <span

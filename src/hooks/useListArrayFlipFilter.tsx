@@ -1,12 +1,11 @@
 import { useMemo } from 'react';
 import { PackOfFilters } from 'types/types';
 
-//TODO: поработать над универсальной типизацией входных и выходных значений
-export const useListArrayFlipFilter = (
+export function useListArrayFlipFilter<T>(
   filterName: string,
-  arrayOfObjects: any[],
+  arrayOfObjects: T[],
   filtersPack: PackOfFilters,
-): any[] => {
+): T[] {
   const listQueryState = Object.values(filtersPack[filterName]).every(Boolean);
 
   const filteredArray = useMemo(() => {

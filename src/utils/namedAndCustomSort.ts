@@ -1,24 +1,25 @@
-import { spellInterface, weightsInterface } from "types/types";
+import { WeightsInterface } from "types/types";
 
-export let namedAndCustomSort: (
-  namedArray: spellInterface[],
-  weightSorting: weightsInterface,
-  sortField: 'level',
-) => spellInterface[];
+interface NamedArrayInterfase {
+  [name: string]: any,
+};
 
-namedAndCustomSort = (
-  namedArray,
-  weightSorting,
-  sortField
-) => {
+export function namedAndCustomSort<T extends NamedArrayInterfase>(
+  namedArray: T[],
+  weightSorting: WeightsInterface | false,
+  sortField: string,
+): T[] {
   const nameSortedArray = [...namedArray].sort((a, b) => {
     return a.name.localeCompare(b.name);
   });
-  const weightSortedArray = nameSortedArray.sort((a, b) => {
-    return (
-      weightSorting[a[sortField]]
-      - weightSorting[b[sortField]]
-    );
-  });
-  return weightSortedArray;
+  if (weightSorting) {
+    const weightSortedArray = nameSortedArray.sort((a, b) => {
+      return (
+        weightSorting[a[sortField]]
+        - weightSorting[b[sortField]]
+      );
+    });
+    return weightSortedArray;
+  }
+  return nameSortedArray;
 };

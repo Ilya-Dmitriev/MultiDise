@@ -1,0 +1,24 @@
+.classes_page {
+  height: 100%;
+  display: flex;
+  font-size: 1.6rem;
+
+  .classes_links {
+    height: 100%;
+  }
+
+  .content_wrap {
+    padding: 0.6em;
+    padding-top: 0;
+    display: flex;
+    flex: 1;
+
+    .content_zone {
+      overflow: hidden;
+      flex: 1;
+      border-radius: 1em;
+      color: $main_tx_cl;
+      background-color: $v1_bg_cl;
+    }
+  }
+}
